@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tamizh Organic Foods – Natural & Homemade</title>
+    <meta name="description"
+        content="Tamizh Organic Foods – Authentic homemade organic products, naturally made and shipped across Tamil Nadu. Sprouted mixes, organic snacks & more." />
+    <link rel="icon" type="image/jpeg" href="fevicon/fevicon.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+
+    <style>
+        /* ─── Reset & Tokens ─────────────────────────────────────── */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --green-dark: #1a3c2e;
+            --green-mid: #2d6a4f;
+            --green-soft: #52b788;
+            --green-light: #b7e4c7;
+            --cream: #faf6f0;
+            --cream-2: #f2ebe0;
+            --brown: #7c5c3e;
+            --text-main: #1c1c1c;
+            --text-muted: #6b7280;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 12px rgba(0, 0, 0, .08);
+            --shadow-md: 0 6px 30px rgba(0, 0, 0, .12);
+            --radius: 14px;
+            --transition: .28s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--cream);
+            color: var(--text-main);
+            min-height: 100vh;
+        }
+
+        /* ─── Top Ticker ─────────────────────────────────────────── */
+        .ticker-bar {
+            background: var(--green-dark);
+            color: var(--green-light);
+            font-size: .78rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            overflow: hidden;
+            height: 36px;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-inner {
+            display: flex;
+            gap: 4rem;
+            animation: ticker-move 28s linear infinite;
+            white-space: nowrap;
+        }
+
+        .ticker-inner span {
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+        }
+
+        .ticker-inner span svg {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        @keyframes ticker-move {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ─── Navbar ─────────────────────────────────────────────── */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 900;
+            background: rgba(250, 246, 240, .92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(45, 106, 79, .12);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2.2rem;
+            height: 66px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            text-decoration: none;
+        }
+
+        .logo img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--green-soft);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            color: var(--green-dark);
+        }
+
+        .logo-tag {
+            font-size: .65rem;
+            font-weight: 500;
+            color: var(--green-soft);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .insta-link {
+            display: flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: .82rem;
+            font-weight: 500;
+            color: var(--green-mid);
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .insta-link:hover {
+            color: var(--brown);
+        }
+
+        .insta-link svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .btn-login {
+            background: var(--green-dark);
+            color: var(--white);
+            border: none;
+            border-radius: 8px;
+            padding: .48rem 1.1rem;
+            font-size: .82rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .btn-login:hover {
+            background: var(--green-mid);
+            transform: translateY(-1px);
+        }
+
+        .btn-login svg {
+            width: 15px;
+            height: 15px;
+        }
+
+        /* logged-in avatar */
+        .user-pill {
+            display: none;
+            align-items: center;
+            gap: .5rem;
+            background: var(--cream-2);
+            border: 1px solid var(--green-light);
+            border-radius: 24px;
+            padding: .3rem .9rem .3rem .4rem;
+            cursor: pointer;
+        }
+
+        .user-pill img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .user-pill span {
+            font-size: .8rem;
+            font-weight: 500;
+            color: var(--green-dark);
+        }
+
+        /* ─── Hero ───────────────────────────────────────────────── */
+        .hero {
+            position: relative;
+            height: 78vh;
+            min-height: 480px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(135deg, rgba(26, 60, 46, .72) 0%, rgba(45, 106, 79, .45) 60%, transparent 100%),
+                url('') center/cover no-repeat;
+            background-color: var(--green-dark);
+        }
+
+        /* Decorative organic blobs */
+        .hero-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: .35;
+            pointer-events: none;
+        }
+
+        .hero-blob-1 {
+            width: 420px;
+            height: 420px;
+            background: var(--green-soft);
+            top: -80px;
+            right: -100px;
+        }
+
+        .hero-blob-2 {
+            width: 280px;
+            height: 280px;
+            background: var(--green-light);
+            bottom: -60px;
+            left: -60px;
+        }
+
+        .hero-content {
+            position: relative;
+            text-align: center;
+            color: var(--white);
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.1rem;
+        }
+
+        .hero-badge {
+            background: rgba(255, 255, 255, .15);
+            border: 1px solid rgba(255, 255, 255, .3);
+            backdrop-filter: blur(8px);
+            border-radius: 50px;
+            padding: .35rem 1rem;
+            font-size: .75rem;
+            font-weight: 500;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--green-light);
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.2rem, 6vw, 3.8rem);
+            line-height: 1.15;
+            max-width: 700px;
+        }
+
+        .hero h1 em {
+            color: var(--green-light);
+            font-style: normal;
+        }
+
+        .hero-sub {
+            font-size: clamp(.9rem, 2vw, 1.05rem);
+            color: rgba(255, 255, 255, .78);
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: .6rem;
+            margin-top: .3rem;
+        }
+
+        .hero-pill {
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .22);
+            border-radius: 50px;
+            padding: .35rem .9rem;
+            font-size: .76rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: .38rem;
+            color: var(--white);
+        }
+
+        .hero-pill span.dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--green-soft);
+            display: inline-block;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 1.8rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, .6);
+            font-size: .72rem;
+            letter-spacing: .05em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .4rem;
+            animation: bob 2.2s ease-in-out infinite;
+        }
+
+        .hero-scroll .arrow {
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes bob {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(5px);
+            }
+        }
+
+        /* ─── Section Wrapper ────────────────────────────────────── */
+        .section {
+            padding: 4rem 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            color: var(--green-dark);
+            line-height: 1.1;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--green-light), transparent);
+            margin-bottom: .55rem;
+        }
+
+        /* ─── Products Container (horizontal scroll) ─────────────── */
+        .products-outer {
+            position: relative;
+        }
+
+        .products-scroll {
+            display: flex;
+            gap: 1.4rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 1rem;
+            scrollbar-width: none;
+        }
+
+        .products-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Arrow nav */
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 1px solid var(--green-light);
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background var(--transition), transform var(--transition);
+        }
+
+        .scroll-btn:hover {
+            background: var(--green-dark);
+        }
+
+        .scroll-btn:hover svg {
+            stroke: var(--white);
+        }
+
+        .scroll-btn svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--green-dark);
+            transition: stroke var(--transition);
+        }
+
+        .scroll-btn.prev {
+            left: -18px;
+        }
+
+        .scroll-btn.next {
+            right: -18px;
+        }
+
+        /* ─── Product Card ───────────────────────────────────────── */
+        .product-card {
+            flex: 0 0 clamp(200px, 22vw, 240px);
+            scroll-snap-align: start;
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform var(--transition), box-shadow var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: var(--cream-2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-img .img-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem;
+            color: var(--green-soft);
+            opacity: .7;
+        }
+
+        .product-img .img-placeholder svg {
+            width: 42px;
+            height: 42px;
+        }
+
+        .product-img .img-placeholder span {
+            font-size: .7rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: .6rem;
+            left: .6rem;
+            background: var(--green-dark);
+            color: var(--white);
+            font-size: .62rem;
+            font-weight: 600;
+            letter-spacing: .04em;
+            padding: .2rem .55rem;
+            border-radius: 50px;
+        }
+
+        .product-body {
+            padding: 1rem 1rem 1.1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+        }
+
+        .product-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1rem;
+            color: var(--green-dark);
+            line-height: 1.25;
+        }
+
+        .product-tag {
+            font-size: .7rem;
+            font-weight: 500;
+            color: var(--green-soft);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .product-desc {
+            font-size: .77rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: .2rem;
+        }
+
+        /* ─── Genre divider ──────────────────────────────────────── */
+        .genre-separator {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--green-light), transparent);
+            margin: 0 2rem;
+        }
+
+        /* ─── Info Strip ─────────────────────────────────────────── */
+        .info-strip {
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .info-icon {
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, .1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .info-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--green-light);
+        }
+
+        .info-label {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        .info-val {
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        /* ─── Footer ─────────────────────────────────────────────── */
+        footer {
+            background: #111;
+            color: rgba(255, 255, 255, .55);
+            text-align: center;
+            padding: 1.6rem 1rem;
+            font-size: .76rem;
+        }
+
+        footer a {
+            color: var(--green-soft);
+            text-decoration: none;
+        }
+
+        /* ─── Login Modal ────────────────────────────────────────── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(6px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        .modal-box {
+            background: var(--white);
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, .22);
+            overflow: hidden;
+            animation: slide-up .3s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-head {
+            background: var(--green-dark);
+            padding: 1.8rem 1.8rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: .3rem;
+        }
+
+        .modal-head h2 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--white);
+            font-size: 1.4rem;
+        }
+
+        .modal-head p {
+            color: rgba(255, 255, 255, .65);
+            font-size: .82rem;
+        }
+
+        .modal-body {
+            padding: 1.6rem 1.8rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: .35rem;
+        }
+
+        .field label {
+            font-size: .78rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            letter-spacing: .03em;
+        }
+
+        .field input {
+            border: 1.5px solid #e5e7eb;
+            border-radius: 9px;
+            padding: .6rem .85rem;
+            font-size: .87rem;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            transition: border-color var(--transition);
+            outline: none;
+        }
+
+        .field input:focus {
+            border-color: var(--green-soft);
+        }
+
+        .modal-note {
+            font-size: .74rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .btn-save {
+            background: var(--green-dark);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            padding: .72rem 1rem;
+            font-size: .9rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background var(--transition), transform var(--transition);
+            letter-spacing: .02em;
+        }
+
+        .btn-save:hover {
+            background: var(--green-mid);
+            transform: translateY(-1px);
+        }
+
+        .btn-close-modal {
+            background: none;
+            border: none;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .7);
+            display: flex;
+            padding: .2rem;
+        }
+
+        .btn-close-modal svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .modal-head {
+            position: relative;
+        }
+
+        /* Profile Sidebar (slide-in) */
+        .profile-drawer {
+            position: fixed;
+            top: 0;
+            right: -340px;
+            width: 320px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -8px 0 40px rgba(0, 0, 0, .14);
+            z-index: 1800;
+            transition: right var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-head {
+            background: var(--green-dark);
+            padding: 2rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: .4rem;
+            position: relative;
+        }
+
+        .drawer-head h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .drawer-head p {
+            font-size: .78rem;
+            color: rgba(255, 255, 255, .6);
+        }
+
+        .btn-close-drawer {
+            position: absolute;
+            top: .9rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .7);
+        }
+
+        .btn-close-drawer svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .drawer-body {
+            padding: 1.5rem;
+            flex: 1;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .drawer-field {
+            display: flex;
+            flex-direction: column;
+            gap: .2rem;
+        }
+
+        .drawer-field .lbl {
+            font-size: .7rem;
+            font-weight: 600;
+            color: var(--green-soft);
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+
+        .drawer-field .val {
+            font-size: .9rem;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .drawer-divider {
+            height: 1px;
+            background: #f0f0f0;
+        }
+
+        .btn-logout {
+            margin: auto 1.5rem 1.5rem;
+            background: none;
+            border: 1.5px solid #e5e7eb;
+            border-radius: 9px;
+            padding: .6rem 1rem;
+            font-size: .83rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+
+        .btn-logout:hover {
+            border-color: #f44;
+            color: #f44;
+        }
+
+        /* Overlay backdrop for drawer */
+        .drawer-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1700;
+            background: rgba(0, 0, 0, .3);
+        }
+
+        .drawer-backdrop.open {
+            display: block;
+        }
+
+        /* ─── Responsive ─────────────────────────────────────────── */
+        @media (max-width: 640px) {
+            .navbar {
+                padding: 0 1.2rem;
+            }
+
+            .logo-text .logo-name {
+                font-size: .97rem;
+            }
+
+            .logo-tag {
+                display: none;
+            }
+
+            .insta-link .insta-text {
+                display: none;
+            }
+
+            .section {
+                padding: 3rem 1.2rem;
+            }
+
+            .scroll-btn.prev {
+                left: -12px;
+            }
+
+            .scroll-btn.next {
+                right: -12px;
+            }
+
+            .info-strip {
+                padding: 2.2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════ TOP TICKER ══════════════════════════════════ -->
+    <div class="ticker-bar" aria-label="Company highlights">
+        <div class="ticker-inner" id="ticker">
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
+                    <path d="M12 6v6l4 2" />
+                </svg>
+                Natural &amp; Homemade Products
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+                Shipping Across Tamil Nadu
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4" />
+                    <path d="M21 12c0-4.97-4.03-9-9-9S3 7.03 3 12s4.03 9 9 9 9-4.03 9-9z" />
+                </svg>
+                FSSAI Certified
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                </svg>
+                @thamizhhomemade
+            </span>
+            <!-- duplicate for seamless loop -->
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
+                    <path d="M12 6v6l4 2" />
+                </svg>
+                Natural &amp; Homemade Products
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+                Shipping Across Tamil Nadu
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 12l2 2 4-4" />
+                    <path d="M21 12c0-4.97-4.03-9-9-9S3 7.03 3 12s4.03 9 9 9 9-4.03 9-9z" />
+                </svg>
+                FSSAI Certified
+            </span>
+            <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                </svg>
+                @thamizhhomemade
+            </span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ NAVBAR ══════════════════════════════════════ -->
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="fevicon/fevicon.jpeg" alt="Tamizh Organic Foods logo" />
+            <div class="logo-text">
+                <span class="logo-name">Tamizh Organic Foods</span>
+                <span class="logo-tag">Pure · Natural · Homemade</span>
+            </div>
+        </a>
+
+        <div class="nav-right">
+            <a href="https://www.instagram.com/thamizhhomemade" target="_blank" rel="noopener" class="insta-link"
+                aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+                <span class="insta-text">@thamizhhomemade</span>
+            </a>
+
+            <button class="btn-login" id="btnLogin" aria-label="Login">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
+                    <polyline points="10 17 15 12 10 7" />
+                    <line x1="15" y1="12" x2="3" y2="12" />
+                </svg>
+                Login
+            </button>
+
+            <div class="user-pill" id="userPill" onclick="openDrawer()" title="View profile">
+                <img id="userAvatarNav" src="" alt="avatar" />
+                <span id="userNameNav">User</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════════════════ HERO ════════════════════════════════════════ -->
+    <section class="hero" aria-label="Hero banner">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">✦ Est. with love from Tamil Nadu</div>
+            <h1>
+                <em>Natural</em> &amp; Homemade<br />Goodness, Delivered
+            </h1>
+            <p class="hero-sub">
+                Handcrafted organic foods made fresh — no preservatives, no compromise. From our kitchen to your family.
+            </p>
+            <div class="hero-pills">
+                <span class="hero-pill"><span class="dot"></span> 100% Natural</span>
+                <span class="hero-pill"><span class="dot"></span> FSSAI Certified</span>
+                <span class="hero-pill"><span class="dot"></span> Ships across Tamil Nadu</span>
+            </div>
+        </div>
+
+        <div class="hero-scroll" aria-hidden="true">
+            <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+            <span>Explore</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ PRODUCTS — GENRE 1 ══════════════════════════ -->
+    <section class="section" id="homemade" aria-labelledby="genre1-title">
+        <div class="section-header">
+            <h2 class="section-title" id="genre1-title">Homemade Organic Mixes</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="products-outer">
+            <button class="scroll-btn prev" onclick="scrollProducts('row1',-1)" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+            <div class="products-scroll" id="row1">
+
+                <!-- Card 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" />
+                            </svg>
+                            <span>Photo Coming Soon</span>
+                        </div>
+                        <span class="product-badge">Bestseller</span>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-tag">Organic Mix</p>
+                        <h3 class="product-name">Sprouted Choco Mix</h3>
+                        <p class="product-desc">Nutritious sprouted grain blend with natural chocolate flavour — a
+                            healthy treat for all ages.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" />
+                            </svg>
+                            <span>Photo Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-tag">Organic Mix</p>
+                        <h3 class="product-name">Instant Pongal Mix</h3>
+                        <p class="product-desc">Ready-to-cook authentic pongal mix prepared with traditional spices and
+                            wholesome grains.</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" />
+                            </svg>
+                            <span>Photo Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-tag">Organic Mix</p>
+                        <h3 class="product-name">Raw Millet Mix</h3>
+                        <p class="product-desc">A robust blend of raw millets packed with fibre, iron, and natural
+                            goodness — unprocessed &amp; pure.</p>
+                    </div>
+                </div>
+
+            </div><!-- /row1 -->
+            <button class="scroll-btn next" onclick="scrollProducts('row1',1)" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <div class="genre-separator"></div>
+
+    <!-- ═══════════════════════════════════ PRODUCTS — GENRE 2 ══════════════════════════ -->
+    <section class="section" id="snacks" aria-labelledby="genre2-title">
+        <div class="section-header">
+            <h2 class="section-title" id="genre2-title">Organic Snacks</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="products-outer">
+            <button class="scroll-btn prev" onclick="scrollProducts('row2',-1)" aria-label="Previous">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M15 18l-6-6 6-6" />
+                </svg>
+            </button>
+            <div class="products-scroll" id="row2">
+
+                <!-- Snack cards -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" />
+                            </svg>
+                            <span>Photo Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-tag">Organic Snack</p>
+                        <h3 class="product-name">Tangu Tomato Chips</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" />
+                            </svg>
+                            <span>Photo Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-tag">Organic Snack</p>
+                        <h3 class="product-name">Kambu Raig Cookies</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" />
+                            </svg>
+                            <span>Photo Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-tag">Organic Snack</p>
+                        <h3 class="product-name">Peanut Pops</h3>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-img">
+                        <div class="img-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 14.5c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z" />
+                            </svg>
+                            <span>Photo Coming Soon</span>
+                        </div>
+                    </div>
+                    <div class="product-body">
+                        <p class="product-tag">Organic Snack</p>
+                        <h3 class="product-name">Chikkis</h3>
+                    </div>
+                </div>
+
+            </div><!-- /row2 -->
+            <button class="scroll-btn next" onclick="scrollProducts('row2',1)" aria-label="Next">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <path d="M9 18l6-6-6-6" />
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════ INFO STRIP ═══════════════════════════════════ -->
+    <div class="info-strip" aria-label="Company info">
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z" />
+                    <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                    <line x1="9" y1="9" x2="9.01" y2="9" />
+                    <line x1="15" y1="9" x2="15.01" y2="9" />
+                </svg>
+            </div>
+            <p class="info-label">100% Natural</p>
+            <p class="info-val">No preservatives, no additives</p>
+        </div>
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </div>
+            <p class="info-label">Pan Tamil Nadu</p>
+            <p class="info-val">Shipping to all districts</p>
+        </div>
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <path d="M9 12l2 2 4-4" />
+                    <path d="M21 12c0-4.97-4.03-9-9-9S3 7.03 3 12s4.03 9 9 9 9-4.03 9-9z" />
+                </svg>
+            </div>
+            <p class="info-label">FSSAI Certified</p>
+            <p class="info-val">Licence no. to be updated</p>
+        </div>
+        <div class="info-item">
+            <div class="info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
+            </div>
+            <p class="info-label">@thamizhhomemade</p>
+            <p class="info-val"><a href="https://www.instagram.com/thamizhhomemade" target="_blank" rel="noopener"
+                    style="color:var(--green-light)">Follow on Instagram</a></p>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+    <footer>
+        <p>&copy; 2026 Tamizh Organic Foods. All rights reserved. &nbsp;|&nbsp;
+            <a href="https://www.instagram.com/thamizhhomemade" target="_blank" rel="noopener">@thamizhhomemade</a>
+        </p>
+    </footer>
+
+    <!-- ═══════════════════════════════════ LOGIN MODAL ═════════════════════════════════ -->
+    <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <div class="modal-head">
+                <h2 id="modalTitle">Welcome Back 🌿</h2>
+                <p>Please enter your details to continue</p>
+                <button class="btn-close-modal" onclick="closeModal()" aria-label="Close">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                        <line x1="18" y1="6" x2="6" y2="18" />
+                        <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="field">
+                    <label for="inp-email">Email Address</label>
+                    <input type="email" id="inp-email" placeholder="you@example.com" autocomplete="email" />
+                </div>
+                <div class="field">
+                    <label for="inp-name">Full Name</label>
+                    <input type="text" id="inp-name" placeholder="Your name" autocomplete="name" />
+                </div>
+                <div class="field">
+                    <label for="inp-phone">Phone Number</label>
+                    <input type="tel" id="inp-phone" placeholder="+91 00000 00000" autocomplete="tel" />
+                </div>
+                <div class="field">
+                    <label for="inp-address">Delivery Address</label>
+                    <input type="text" id="inp-address" placeholder="Street, City, Pincode"
+                        autocomplete="address-line1" />
+                </div>
+                <p class="modal-note">Your details are saved locally on this device and used only for order queries.</p>
+                <button class="btn-save" onclick="saveProfile()">Save &amp; Continue →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════ PROFILE DRAWER ══════════════════════════════ -->
+    <div class="drawer-backdrop" id="drawerBackdrop" onclick="closeDrawer()"></div>
+    <aside class="profile-drawer" id="profileDrawer" aria-label="User profile">
+        <div class="drawer-head">
+            <h3 id="drawerName">—</h3>
+            <p id="drawerEmail">—</p>
+            <button class="btn-close-drawer" onclick="closeDrawer()" aria-label="Close profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <div class="drawer-field">
+                <span class="lbl">Phone</span>
+                <span class="val" id="drawerPhone">—</span>
+            </div>
+            <div class="drawer-divider"></div>
+            <div class="drawer-field">
+                <span class="lbl">Delivery Address</span>
+                <span class="val" id="drawerAddress" style="line-height:1.55;">—</span>
+            </div>
+        </div>
+        <button class="btn-logout" onclick="logout()">Sign Out</button>
+    </aside>
+
+    <!-- ═══════════════════════════════════ SCRIPTS ═════════════════════════════════════ -->
+    <script>
+        /* ── Login / Profile ──────────────────────────────────────── */
+        const LS = 'tof_user';
+
+        function loadUser() {
+            const raw = localStorage.getItem(LS);
+            if (!raw) return null;
+            try { return JSON.parse(raw); } catch { return null; }
+        }
+
+        function applyUser(u) {
+            if (!u) return;
+            document.getElementById('btnLogin').style.display = 'none';
+            const pill = document.getElementById('userPill');
+            pill.style.display = 'flex';
+            // initials avatar
+            const initials = (u.name || 'U').split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2);
+            const avatarEl = document.getElementById('userAvatarNav');
+            // draw a canvas avatar
+            const canvas = document.createElement('canvas');
+            canvas.width = 60; canvas.height = 60;
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = '#2d6a4f';
+            ctx.fillRect(0, 0, 60, 60);
+            ctx.fillStyle = '#fff';
+            ctx.font = 'bold 24px Inter, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(initials, 30, 31);
+            avatarEl.src = canvas.toDataURL();
+            document.getElementById('userNameNav').textContent = (u.name || '').split(' ')[0];
+            // drawer
+            document.getElementById('drawerName').textContent = u.name || '—';
+            document.getElementById('drawerEmail').textContent = u.email || '—';
+            document.getElementById('drawerPhone').textContent = u.phone || '—';
+            document.getElementById('drawerAddress').textContent = u.address || '—';
+        }
+
+        function openModal() {
+            document.getElementById('loginModal').classList.add('open');
+            document.getElementById('inp-email').focus();
+        }
+        function closeModal() {
+            document.getElementById('loginModal').classList.remove('open');
+        }
+        function saveProfile() {
+            const email = document.getElementById('inp-email').value.trim();
+            const name = document.getElementById('inp-name').value.trim();
+            const phone = document.getElementById('inp-phone').value.trim();
+            const address = document.getElementById('inp-address').value.trim();
+            if (!email) { document.getElementById('inp-email').focus(); return; }
+            if (!name) { document.getElementById('inp-name').focus(); return; }
+            const u = { email, name, phone, address };
+            localStorage.setItem(LS, JSON.stringify(u));
+            applyUser(u);
+            closeModal();
+        }
+        function openDrawer() {
+            document.getElementById('profileDrawer').classList.add('open');
+            document.getElementById('drawerBackdrop').classList.add('open');
+        }
+        function closeDrawer() {
+            document.getElementById('profileDrawer').classList.remove('open');
+            document.getElementById('drawerBackdrop').classList.remove('open');
+        }
+        function logout() {
+            localStorage.removeItem(LS);
+            document.getElementById('userPill').style.display = 'none';
+            document.getElementById('btnLogin').style.display = '';
+            closeDrawer();
+        }
+
+        document.getElementById('btnLogin').addEventListener('click', openModal);
+        document.getElementById('loginModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { closeModal(); closeDrawer(); }
+            if (e.key === 'Enter' && document.getElementById('loginModal').classList.contains('open')) saveProfile();
+        });
+
+        // init on load
+        applyUser(loadUser());
+
+        /* ── Product Scroll ───────────────────────────────────────── */
+        function scrollProducts(rowId, dir) {
+            const el = document.getElementById(rowId);
+            const cardWidth = el.querySelector('.product-card').offsetWidth + 22;
+            el.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
