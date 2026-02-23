@@ -396,6 +396,163 @@
             margin-bottom: .55rem;
         }
 
+        /* ─── Smooth Transitions & Animations ───────────────────── */
+
+        /* Page load fade-in */
+        body {
+            opacity: 0;
+            transition: opacity .55s ease;
+        }
+
+        body.loaded {
+            opacity: 1;
+        }
+
+        /* Scroll-reveal: base hidden state */
+        .reveal {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity .65s cubic-bezier(.22, 1, .36, 1),
+                transform .65s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger delay helpers */
+        .reveal-d1 {
+            transition-delay: .08s;
+        }
+
+        .reveal-d2 {
+            transition-delay: .18s;
+        }
+
+        .reveal-d3 {
+            transition-delay: .28s;
+        }
+
+        .reveal-d4 {
+            transition-delay: .38s;
+        }
+
+        /* Hero — entrance animation on load */
+        .hero-badge {
+            animation: hero-fade-up .7s .15s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .hero h1 {
+            animation: hero-fade-up .75s .28s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .hero-sub {
+            animation: hero-fade-up .7s .42s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .hero-pills {
+            animation: hero-fade-up .65s .56s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        @keyframes hero-fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(22px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Navbar — deepen shadow on scroll */
+        .navbar.scrolled {
+            box-shadow: 0 4px 24px rgba(26, 60, 46, .13);
+            border-bottom-color: rgba(45, 106, 79, .22);
+        }
+
+        /* Product card — smooth scale-in when revealed */
+        .product-card {
+            opacity: 0;
+            transform: translateY(28px) scale(.97);
+            transition:
+                opacity .55s cubic-bezier(.22, 1, .36, 1),
+                transform .55s cubic-bezier(.22, 1, .36, 1),
+                box-shadow var(--transition);
+        }
+
+        .product-card.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Info strip items */
+        .info-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .55s cubic-bezier(.22, 1, .36, 1),
+                transform .55s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .info-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Button ripple effect */
+        .btn-login,
+        .btn-save {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .35);
+            transform: scale(0);
+            animation: ripple-out .5s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-out {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Section header fade-slide */
+        .section-header {
+            opacity: 0;
+            transform: translateX(-18px);
+            transition: opacity .6s cubic-bezier(.22, 1, .36, 1),
+                transform .6s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .section-header.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Genre separator reveal */
+        .genre-separator {
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        .genre-separator.visible {
+            transform: scaleX(1);
+        }
+
+        /* Scroll arrow button — hover pulse */
+        .scroll-btn:active {
+            transform: translateY(-50%) scale(.9);
+        }
+
         /* ─── Products Container (horizontal scroll) ─────────────── */
         .products-outer {
             position: relative;
@@ -879,6 +1036,365 @@
             display: block;
         }
 
+        /* ─── Cart Button (navbar) ────────────────────────────────── */
+        .btn-cart {
+            position: relative;
+            background: none;
+            border: 1.5px solid var(--green-light);
+            border-radius: 10px;
+            width: 42px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background var(--transition), border-color var(--transition), transform var(--transition);
+            color: var(--green-dark);
+        }
+
+        .btn-cart:hover {
+            background: var(--green-dark);
+            border-color: var(--green-dark);
+            color: var(--white);
+            transform: translateY(-1px);
+        }
+
+        .btn-cart svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            width: 18px;
+            height: 18px;
+            background: #e63946;
+            color: #fff;
+            font-size: .65rem;
+            font-weight: 700;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--cream);
+            animation: badge-pop .25s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        .cart-badge.show {
+            display: flex;
+        }
+
+        @keyframes badge-pop {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* ─── Add to Cart Button ─────────────────────────────────── */
+        .btn-add-cart {
+            margin-top: auto;
+            padding: .52rem .9rem;
+            background: var(--green-dark);
+            color: var(--white);
+            border: none;
+            border-radius: 9px;
+            font-size: .8rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .4rem;
+            width: 100%;
+            transition: background var(--transition), transform var(--transition);
+            letter-spacing: .02em;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--green-mid);
+            transform: translateY(-1px);
+        }
+
+        .btn-add-cart.added {
+            background: #2d9b64;
+        }
+
+        .btn-add-cart svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+            flex-shrink: 0;
+        }
+
+        /* ─── Cart Drawer ─────────────────────────────────────────── */
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -380px;
+            width: 350px;
+            height: 100vh;
+            background: var(--white);
+            box-shadow: -8px 0 40px rgba(0, 0, 0, .15);
+            z-index: 1900;
+            transition: right .35s cubic-bezier(.4, 0, .2, 1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-drawer.open {
+            right: 0;
+        }
+
+        .cart-drawer-head {
+            background: var(--green-dark);
+            padding: 1.5rem 1.4rem 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cart-drawer-head h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--white);
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+        }
+
+        .cart-drawer-head h3 svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--green-light);
+        }
+
+        .btn-close-cart {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .7);
+            display: flex;
+        }
+
+        .btn-close-cart svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Cart items list */
+        .cart-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: .8rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+        }
+
+        .cart-empty {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: .8rem;
+            color: var(--text-muted);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .cart-empty svg {
+            width: 48px;
+            height: 48px;
+            stroke: var(--green-light);
+            opacity: .7;
+        }
+
+        .cart-empty p {
+            font-size: .85rem;
+            line-height: 1.5;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            background: var(--cream);
+            border-radius: 10px;
+            padding: .7rem .9rem;
+            animation: item-in .3s cubic-bezier(.22, 1, .36, 1);
+        }
+
+        @keyframes item-in {
+            from {
+                opacity: 0;
+                transform: translateX(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cart-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--green-light);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .cart-item-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--green-dark);
+        }
+
+        .cart-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cart-item-name {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cart-item-cat {
+            font-size: .7rem;
+            color: var(--text-muted);
+            margin-top: .1rem;
+        }
+
+        .cart-qty {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+        }
+
+        .qty-btn {
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            border: 1.5px solid var(--green-light);
+            background: var(--white);
+            font-size: 1rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--green-dark);
+            transition: background var(--transition);
+        }
+
+        .qty-btn:hover {
+            background: var(--green-light);
+        }
+
+        .qty-num {
+            font-size: .85rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .btn-remove-item {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #ccc;
+            padding: .1rem;
+            display: flex;
+            transition: color var(--transition);
+        }
+
+        .btn-remove-item:hover {
+            color: #e63946;
+        }
+
+        .btn-remove-item svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        /* Cart footer */
+        .cart-footer {
+            border-top: 1px solid #f0f0f0;
+            padding: 1.1rem 1.4rem 1.4rem;
+            display: flex;
+            flex-direction: column;
+            gap: .7rem;
+        }
+
+        .cart-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: .82rem;
+            color: var(--text-muted);
+        }
+
+        .cart-summary strong {
+            color: var(--green-dark);
+            font-size: .95rem;
+        }
+
+        .btn-enquire {
+            background: var(--green-dark);
+            color: var(--white);
+            border: none;
+            border-radius: 10px;
+            padding: .75rem 1rem;
+            font-size: .88rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            width: 100%;
+            transition: background var(--transition), transform var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .5rem;
+        }
+
+        .btn-enquire:hover {
+            background: var(--green-mid);
+            transform: translateY(-1px);
+        }
+
+        .btn-clear-cart {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: .75rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: underline;
+            transition: color var(--transition);
+        }
+
+        .btn-clear-cart:hover {
+            color: #e63946;
+        }
+
         /* ─── Responsive ─────────────────────────────────────────── */
         @media (max-width: 640px) {
             .navbar {
@@ -911,6 +1427,11 @@
 
             .info-strip {
                 padding: 2.2rem 1.2rem;
+            }
+
+            .cart-drawer {
+                width: 100%;
+                right: -100%;
             }
         }
     </style>
@@ -1013,6 +1534,16 @@
                 <img id="userAvatarNav" src="" alt="avatar" />
                 <span id="userNameNav">User</span>
             </div>
+
+            <!-- Cart button -->
+            <button class="btn-cart" id="btnCart" onclick="openCartDrawer()" aria-label="View cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
         </div>
     </nav>
 
@@ -1077,6 +1608,14 @@
                         <h3 class="product-name">Sprouted Choco Mix</h3>
                         <p class="product-desc">Nutritious sprouted grain blend with natural chocolate flavour — a
                             healthy treat for all ages.</p>
+                        <button class="btn-add-cart" onclick="addToCart('Sprouted Choco Mix','Organic Mix',this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -1096,6 +1635,14 @@
                         <h3 class="product-name">Instant Pongal Mix</h3>
                         <p class="product-desc">Ready-to-cook authentic pongal mix prepared with traditional spices and
                             wholesome grains.</p>
+                        <button class="btn-add-cart" onclick="addToCart('Instant Pongal Mix','Organic Mix',this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -1115,6 +1662,14 @@
                         <h3 class="product-name">Raw Millet Mix</h3>
                         <p class="product-desc">A robust blend of raw millets packed with fibre, iron, and natural
                             goodness — unprocessed &amp; pure.</p>
+                        <button class="btn-add-cart" onclick="addToCart('Raw Millet Mix','Organic Mix',this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -1158,6 +1713,14 @@
                     <div class="product-body">
                         <p class="product-tag">Organic Snack</p>
                         <h3 class="product-name">Tangu Tomato Chips</h3>
+                        <button class="btn-add-cart" onclick="addToCart('Tangu Tomato Chips','Organic Snack',this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -1174,6 +1737,14 @@
                     <div class="product-body">
                         <p class="product-tag">Organic Snack</p>
                         <h3 class="product-name">Kambu Raig Cookies</h3>
+                        <button class="btn-add-cart" onclick="addToCart('Kambu Raig Cookies','Organic Snack',this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -1190,6 +1761,14 @@
                     <div class="product-body">
                         <p class="product-tag">Organic Snack</p>
                         <h3 class="product-name">Peanut Pops</h3>
+                        <button class="btn-add-cart" onclick="addToCart('Peanut Pops','Organic Snack',this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -1206,6 +1785,14 @@
                     <div class="product-body">
                         <p class="product-tag">Organic Snack</p>
                         <h3 class="product-name">Chikkis</h3>
+                        <button class="btn-add-cart" onclick="addToCart('Chikkis','Organic Snack',this)">
+                            <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                                <line x1="3" y1="6" x2="21" y2="6" />
+                                <path d="M16 10a4 4 0 0 1-8 0" />
+                            </svg>
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
 
@@ -1271,6 +1858,121 @@
             <a href="https://www.instagram.com/thamizhhomemade" target="_blank" rel="noopener">@thamizhhomemade</a>
         </p>
     </footer>
+
+    <!-- ═══════════════════════════════════ CART DRAWER ══════════════════════════════════ -->
+    <div class="drawer-backdrop" id="cartBackdrop" onclick="closeCartDrawer()"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart">
+        <div class="cart-drawer-head">
+            <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <path d="M16 10a4 4 0 0 1-8 0" />
+                </svg>
+                My Cart
+            </h3>
+            <button class="btn-close-cart" onclick="closeCartDrawer()" aria-label="Close cart">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Empty state -->
+        <div class="cart-empty" id="cartEmpty">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+                <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <p>Your cart is empty.<br />Add some organic goodness! 🌿</p>
+        </div>
+
+        <!-- Items list -->
+        <div class="cart-list" id="cartList" style="display:none"></div>
+
+        <!-- Footer -->
+        <div class="cart-footer" id="cartFooter" style="display:none">
+            <div class="cart-summary">
+                <span id="cartSummaryText">0 items</span>
+            </div>
+            <button class="btn-enquire" onclick="placeOrder()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="17" height="17">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+                Place Order
+            </button>
+            <button class="btn-clear-cart" onclick="clearCart()">Clear cart</button>
+        </div>
+    </aside>
+
+    <!-- ═══════════════════════════════════ ORDER MODAL ══════════════════════════════════ -->
+    <div class="modal-overlay" id="orderModal" role="dialog" aria-modal="true">
+        <div class="modal-box">
+            <!-- Confirm view -->
+            <div id="orderConfirmView">
+                <div class="modal-head" style="background:var(--green-dark);">
+                    <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:1.3rem;">Confirm Your Order 🌿
+                    </h2>
+                    <p style="color:rgba(255,255,255,.65);font-size:.82rem;margin-top:.2rem;">Review your items and
+                        delivery details</p>
+                    <button class="btn-close-modal" onclick="closeOrderModal()" aria-label="Close">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Cart summary -->
+                    <div style="background:var(--cream);border-radius:10px;padding:.9rem 1rem;">
+                        <p
+                            style="font-size:.72rem;font-weight:600;color:var(--green-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem;">
+                            Your Items</p>
+                        <div id="orderItemsList" style="display:flex;flex-direction:column;gap:.4rem;"></div>
+                    </div>
+                    <!-- Delivery details -->
+                    <div style="background:var(--cream);border-radius:10px;padding:.9rem 1rem;">
+                        <p
+                            style="font-size:.72rem;font-weight:600;color:var(--green-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.7rem;">
+                            Delivery Details</p>
+                        <div class="field">
+                            <label for="ord-name">Full Name</label>
+                            <input type="text" id="ord-name" placeholder="Your name" />
+                        </div>
+                        <div class="field" style="margin-top:.7rem;">
+                            <label for="ord-phone">Phone Number</label>
+                            <input type="tel" id="ord-phone" placeholder="+91 00000 00000" />
+                        </div>
+                        <div class="field" style="margin-top:.7rem;">
+                            <label for="ord-address">Delivery Address</label>
+                            <input type="text" id="ord-address" placeholder="Street, City, Pincode" />
+                        </div>
+                    </div>
+                    <p class="modal-note">Our team will confirm your order and contact you shortly.</p>
+                    <button class="btn-save" onclick="confirmOrder()">Confirm &amp; Place Order →</button>
+                </div>
+            </div>
+            <!-- Success view -->
+            <div id="orderSuccessView" style="display:none;text-align:center;padding:2.5rem 1.8rem;">
+                <div
+                    style="width:64px;height:64px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-dark)" stroke-width="2.5" width="30"
+                        height="30">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </div>
+                <h2
+                    style="font-family:'DM Serif Display',serif;color:var(--green-dark);font-size:1.4rem;margin-bottom:.5rem;">
+                    Order Placed!</h2>
+                <p style="color:var(--text-muted);font-size:.85rem;line-height:1.6;">Thank you! We've received your
+                    order and will reach out to you soon to confirm delivery.</p>
+                <button class="btn-save" style="margin-top:1.4rem;" onclick="closeOrderModal()">Continue
+                    Shopping</button>
+            </div>
+        </div>
+    </div>
 
     <!-- ═══════════════════════════════════ LOGIN MODAL ═════════════════════════════════ -->
     <div class="modal-overlay" id="loginModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
@@ -1421,12 +2123,235 @@
         // init on load
         applyUser(loadUser());
 
-        /* ── Product Scroll ───────────────────────────────────────── */
+        /* ── Product Scroll ─────────────────────────────────────────────────────────────────── */
         function scrollProducts(rowId, dir) {
             const el = document.getElementById(rowId);
             const cardWidth = el.querySelector('.product-card').offsetWidth + 22;
             el.scrollBy({ left: dir * cardWidth, behavior: 'smooth' });
         }
+
+        /* ── Cart ──────────────────────────────────────────────────────────────────────────── */
+        let cart = []; // [{name, category, qty}]
+
+        function addToCart(name, category, btn) {
+            const existing = cart.find(i => i.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, category, qty: 1 });
+            }
+            updateCartBadge();
+            renderCartDrawer();
+            // Button feedback
+            btn.classList.add('added');
+            btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Added!`;
+            setTimeout(() => {
+                btn.classList.remove('added');
+                btn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> Add to Cart`;
+            }, 1400);
+        }
+
+        function updateCartBadge() {
+            const total = cart.reduce((s, i) => s + i.qty, 0);
+            const badge = document.getElementById('cartBadge');
+            badge.textContent = total;
+            badge.classList.toggle('show', total > 0);
+        }
+
+        function renderCartDrawer() {
+            const list = document.getElementById('cartList');
+            const empty = document.getElementById('cartEmpty');
+            const footer = document.getElementById('cartFooter');
+            const summary = document.getElementById('cartSummaryText');
+
+            if (cart.length === 0) {
+                list.style.display = 'none';
+                footer.style.display = 'none';
+                empty.style.display = '';
+                return;
+            }
+            empty.style.display = 'none';
+            list.style.display = 'flex';
+            footer.style.display = '';
+
+            const total = cart.reduce((s, i) => s + i.qty, 0);
+            summary.textContent = total + ' item' + (total !== 1 ? 's' : '') + ' in cart';
+
+            list.innerHTML = cart.map((item, idx) => `
+                <div class="cart-item">
+                    <div class="cart-item-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 2h1l.4 2M7 13h10l4-8H5.4"/><circle cx="7" cy="16" r="1"/><circle cx="20" cy="16" r="1"/></svg>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-cat">${item.category}</div>
+                    </div>
+                    <div class="cart-qty">
+                        <button class="qty-btn" onclick="changeQty(${idx},-1)">−</button>
+                        <span class="qty-num">${item.qty}</span>
+                        <button class="qty-btn" onclick="changeQty(${idx},1)">+</button>
+                    </div>
+                    <button class="btn-remove-item" onclick="removeItem(${idx})" aria-label="Remove">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function changeQty(idx, delta) {
+            cart[idx].qty += delta;
+            if (cart[idx].qty <= 0) cart.splice(idx, 1);
+            updateCartBadge();
+            renderCartDrawer();
+        }
+
+        function removeItem(idx) {
+            cart.splice(idx, 1);
+            updateCartBadge();
+            renderCartDrawer();
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCartBadge();
+            renderCartDrawer();
+        }
+
+        function placeOrder() {
+            if (!cart.length) return;
+            // Pre-fill from saved profile
+            const u = loadUser();
+            if (u) {
+                document.getElementById('ord-name').value = u.name || '';
+                document.getElementById('ord-phone').value = u.phone || '';
+                document.getElementById('ord-address').value = u.address || '';
+            }
+            // Render cart items inside order modal
+            const listEl = document.getElementById('orderItemsList');
+            listEl.innerHTML = cart.map(i =>
+                `<div style="display:flex;justify-content:space-between;font-size:.83rem;">
+                    <span style="color:var(--text-main);font-weight:500;">${i.name}</span>
+                    <span style="color:var(--green-mid);font-weight:600;">x${i.qty}</span>
+                 </div>`
+            ).join('');
+            // Show confirm view, hide success
+            document.getElementById('orderConfirmView').style.display = '';
+            document.getElementById('orderSuccessView').style.display = 'none';
+            // Close cart drawer, open order modal
+            closeCartDrawer();
+            document.getElementById('orderModal').classList.add('open');
+        }
+
+        function confirmOrder() {
+            const name = document.getElementById('ord-name').value.trim();
+            const phone = document.getElementById('ord-phone').value.trim();
+            const address = document.getElementById('ord-address').value.trim();
+            if (!name) { document.getElementById('ord-name').focus(); return; }
+            if (!phone) { document.getElementById('ord-phone').focus(); return; }
+            if (!address) { document.getElementById('ord-address').focus(); return; }
+            // ── Placeholder: connect to backend / payment gateway here ──
+            // Show success screen
+            document.getElementById('orderConfirmView').style.display = 'none';
+            document.getElementById('orderSuccessView').style.display = '';
+            clearCart();
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').classList.remove('open');
+        }
+        document.getElementById('orderModal').addEventListener('click', function (e) {
+            if (e.target === this) closeOrderModal();
+        });
+
+        function openCartDrawer() {
+            renderCartDrawer();
+            document.getElementById('cartDrawer').classList.add('open');
+            document.getElementById('cartBackdrop').classList.add('open');
+        }
+        function closeCartDrawer() {
+            document.getElementById('cartDrawer').classList.remove('open');
+            document.getElementById('cartBackdrop').classList.remove('open');
+        }
+
+        /* ── Scroll Reveal (IntersectionObserver) — re-triggers every scroll ── */
+        (function () {
+            // Page load fade-in
+            window.addEventListener('load', () => {
+                document.body.classList.add('loaded');
+            });
+
+            // Navbar scroll shadow
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 10);
+            }, { passive: true });
+
+            // ── Generic reveal: toggle on EVERY intersection (in & out) ──
+            const revealObs = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    // add 'visible' when entering viewport, remove when leaving → re-animates on every scroll
+                    e.target.classList.toggle('visible', e.isIntersecting);
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+            // Section headers
+            document.querySelectorAll('.section-header').forEach(el => revealObs.observe(el));
+
+            // Genre separator
+            document.querySelectorAll('.genre-separator').forEach(el => revealObs.observe(el));
+
+            // ── Product cards — stagger on EVERY entry ──
+            document.querySelectorAll('.products-scroll').forEach(row => {
+                const cards = row.querySelectorAll('.product-card');
+                const cardObs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            // reset then stagger in
+                            cards.forEach(c => c.classList.remove('visible'));
+                            cards.forEach((card, i) => {
+                                setTimeout(() => card.classList.add('visible'), i * 90);
+                            });
+                        } else {
+                            // hide when row scrolls out — ready to re-animate
+                            cards.forEach(c => c.classList.remove('visible'));
+                        }
+                    });
+                }, { threshold: 0.1 });
+                cardObs.observe(row);
+            });
+
+            // ── Info strip items — stagger on EVERY entry ──
+            const infoItems = document.querySelectorAll('.info-item');
+            const strip = infoItems[0]?.closest('.info-strip') || infoItems[0];
+            if (strip) {
+                const infoObs = new IntersectionObserver((entries) => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            infoItems.forEach(item => item.classList.remove('visible'));
+                            infoItems.forEach((item, i) => {
+                                setTimeout(() => item.classList.add('visible'), i * 100);
+                            });
+                        } else {
+                            infoItems.forEach(item => item.classList.remove('visible'));
+                        }
+                    });
+                }, { threshold: 0.15 });
+                infoObs.observe(strip);
+            }
+
+            // Ripple effect on buttons
+            document.querySelectorAll('.btn-login, .btn-save').forEach(btn => {
+                btn.addEventListener('click', function (e) {
+                    const r = document.createElement('span');
+                    r.className = 'ripple';
+                    const rect = btn.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    r.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px`;
+                    btn.appendChild(r);
+                    setTimeout(() => r.remove(), 550);
+                });
+            });
+        })();
     </script>
 </body>
 
