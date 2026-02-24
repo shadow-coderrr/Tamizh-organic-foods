@@ -25,14 +25,26 @@
         }
 
         :root {
-            --theme-dark: #e89547;
-            /* Elegant muted amber */
-            --theme-mid: #fca858;
-            /* Premium light pastel orange */
-            --theme-soft: #fbc690;
-            /* Very soft peach orange */
-            --theme-light: #fef0dd;
-            /* Ultra-light glowing peach */
+            /* The Warm Orange Scale */
+            --orange-dark: #e69a4d;
+            /* Deeper amber for contrast/text */
+            --orange-mid: #ffb870;
+            /* Bright, soft pastel orange */
+            --orange-soft: #ffdcb5;
+            /* Very soft peach */
+            --orange-light: #ffefe0;
+            /* Pale orange background tint */
+
+            /* The Fresh Green Scale */
+            --green-dark: #73b083;
+            /* Deeper sage for contrast */
+            --green-mid: #95d5a4;
+            /* Soft vibrant mint green */
+            --green-soft: #c4e9cf;
+            /* Very soft mint */
+            --green-light: #e1f2e5;
+            /* Frosted mint wash */
+
             --cream: #faf6f0;
             --cream-2: #f2ebe0;
             --brown: #7c5c3e;
@@ -58,8 +70,8 @@
 
         /* ─── Top Ticker ─────────────────────────────────────────── */
         .ticker-bar {
-            background: var(--theme-dark);
-            color: var(--theme-light);
+            background: var(--green-dark);
+            color: var(--white);
             font-size: .78rem;
             font-weight: 500;
             letter-spacing: .04em;
@@ -106,7 +118,8 @@
             background: rgba(250, 246, 240, .92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(252, 168, 88, .12);
+            border-bottom: 1px solid rgba(149, 213, 164, .25);
+            /* --green-mid */
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -126,7 +139,7 @@
             height: 44px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--theme-soft);
+            border: 2px solid var(--orange-mid);
         }
 
         .logo-text {
@@ -138,13 +151,13 @@
         .logo-name {
             font-family: 'DM Serif Display', serif;
             font-size: 1.1rem;
-            color: var(--theme-dark);
+            color: var(--green-dark);
         }
 
         .logo-tag {
             font-size: .65rem;
             font-weight: 500;
-            color: var(--theme-soft);
+            color: var(--orange-dark);
             letter-spacing: .06em;
             text-transform: uppercase;
         }
@@ -161,7 +174,7 @@
             gap: .35rem;
             font-size: .82rem;
             font-weight: 500;
-            color: var(--theme-mid);
+            color: var(--green-dark);
             text-decoration: none;
             transition: color var(--transition);
         }
@@ -176,8 +189,8 @@
         }
 
         .btn-login {
-            background: var(--theme-dark);
-            color: var(--white);
+            background: var(--orange-mid);
+            color: var(--text-main);
             border: none;
             border-radius: 8px;
             padding: .48rem 1.1rem;
@@ -191,7 +204,8 @@
         }
 
         .btn-login:hover {
-            background: var(--theme-mid);
+            background: var(--green-mid);
+            color: var(--white);
             transform: translateY(-1px);
         }
 
@@ -206,7 +220,7 @@
             align-items: center;
             gap: .5rem;
             background: var(--cream-2);
-            border: 1px solid var(--theme-light);
+            border: 1px solid var(--green-light);
             border-radius: 24px;
             padding: .3rem .9rem .3rem .4rem;
             cursor: pointer;
@@ -222,7 +236,7 @@
         .user-pill span {
             font-size: .8rem;
             font-weight: 500;
-            color: var(--theme-dark);
+            color: var(--green-dark);
         }
 
         /* ─── Hero ───────────────────────────────────────────────── */
@@ -240,9 +254,9 @@
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(135deg, rgba(232, 149, 71, .72) 0%, rgba(252, 168, 88, .45) 60%, transparent 100%),
+                linear-gradient(135deg, rgba(255, 184, 112, .65) 0%, rgba(149, 213, 164, .55) 60%, transparent 100%),
                 url('') center/cover no-repeat;
-            background-color: var(--theme-dark);
+            background-color: var(--green-dark);
         }
 
         /* Decorative organic blobs */
@@ -257,7 +271,7 @@
         .hero-blob-1 {
             width: 420px;
             height: 420px;
-            background: var(--theme-soft);
+            background: var(--orange-mid);
             top: -80px;
             right: -100px;
         }
@@ -265,7 +279,7 @@
         .hero-blob-2 {
             width: 280px;
             height: 280px;
-            background: var(--theme-light);
+            background: var(--green-soft);
             bottom: -60px;
             left: -60px;
         }
@@ -291,7 +305,7 @@
             font-weight: 500;
             letter-spacing: .06em;
             text-transform: uppercase;
-            color: var(--theme-light);
+            color: var(--green-light);
         }
 
         .hero h1 {
@@ -302,7 +316,7 @@
         }
 
         .hero h1 em {
-            color: var(--theme-light);
+            color: var(--orange-mid);
             font-style: normal;
         }
 
@@ -338,7 +352,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--theme-soft);
+            background: var(--green-mid);
             display: inline-block;
         }
 
@@ -389,14 +403,14 @@
         .section-title {
             font-family: 'DM Serif Display', serif;
             font-size: clamp(1.6rem, 4vw, 2.2rem);
-            color: var(--theme-dark);
+            color: var(--green-dark);
             line-height: 1.1;
         }
 
         .section-line {
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, var(--theme-light), transparent);
+            background: linear-gradient(90deg, var(--orange-mid), transparent);
             margin-bottom: .55rem;
         }
 
@@ -596,7 +610,8 @@
         }
 
         .scroll-btn:hover {
-            background: var(--theme-dark);
+            background: var(--orange-mid);
+            border-color: var(--orange-mid);
         }
 
         .scroll-btn:hover svg {
@@ -606,7 +621,7 @@
         .scroll-btn svg {
             width: 18px;
             height: 18px;
-            stroke: var(--theme-dark);
+            stroke: var(--green-dark);
             transition: stroke var(--transition);
         }
 
@@ -658,7 +673,7 @@
             flex-direction: column;
             align-items: center;
             gap: .5rem;
-            color: var(--theme-soft);
+            color: var(--green-mid);
             opacity: .7;
         }
 
@@ -677,8 +692,8 @@
             position: absolute;
             top: .6rem;
             left: .6rem;
-            background: var(--theme-dark);
-            color: var(--white);
+            background: var(--orange-mid);
+            color: var(--text-main);
             font-size: .62rem;
             font-weight: 600;
             letter-spacing: .04em;
@@ -697,14 +712,14 @@
         .product-name {
             font-family: 'DM Serif Display', serif;
             font-size: 1rem;
-            color: var(--theme-dark);
+            color: var(--green-dark);
             line-height: 1.25;
         }
 
         .product-tag {
             font-size: .7rem;
             font-weight: 500;
-            color: var(--theme-soft);
+            color: var(--orange-dark);
             text-transform: uppercase;
             letter-spacing: .05em;
         }
@@ -719,13 +734,13 @@
         /* ─── Genre divider ──────────────────────────────────────── */
         .genre-separator {
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--theme-light), transparent);
+            background: linear-gradient(90deg, transparent, var(--green-light), transparent);
             margin: 0 2rem;
         }
 
         /* ─── Info Strip ─────────────────────────────────────────── */
         .info-strip {
-            background: var(--theme-dark);
+            background: var(--green-dark);
             color: var(--white);
             padding: 3rem 2rem;
             display: grid;
@@ -754,7 +769,7 @@
         .info-icon svg {
             width: 20px;
             height: 20px;
-            stroke: var(--theme-light);
+            stroke: var(--orange-mid);
         }
 
         .info-label {
@@ -778,7 +793,7 @@
         }
 
         footer a {
-            color: var(--theme-soft);
+            color: var(--orange-mid);
             text-decoration: none;
         }
 
