@@ -250,38 +250,129 @@
             justify-content: center;
         }
 
-        .hero-bg {
+        .apple-music-bg {
             position: absolute;
             inset: 0;
-            background:
-                linear-gradient(135deg, rgba(255, 184, 112, .65) 0%, rgba(149, 213, 164, .55) 60%, transparent 100%),
-                url('') center/cover no-repeat;
-            background-color: var(--green-dark);
+            background: #fcfcfc;
+            overflow: hidden;
+            z-index: 0;
         }
 
-        /* Decorative organic blobs */
-        .hero-blob {
+        .apple-music-bg::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+            opacity: 0.8;
+            mix-blend-mode: overlay;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .cloud {
             position: absolute;
             border-radius: 50%;
-            filter: blur(60px);
-            opacity: .35;
+            filter: blur(90px);
+            opacity: 0.85;
+            will-change: transform;
+            mix-blend-mode: normal;
             pointer-events: none;
         }
 
-        .hero-blob-1 {
-            width: 420px;
-            height: 420px;
-            background: var(--orange-mid);
-            top: -80px;
-            right: -100px;
+        .cloud.c-orange-1 {
+            width: 70vw;
+            height: 70vh;
+            background: #ffb870;
+            /* Deepened light orange */
+            top: -10%;
+            left: -10%;
+            animation: float1 24s ease-in-out infinite alternate;
         }
 
-        .hero-blob-2 {
-            width: 280px;
-            height: 280px;
-            background: var(--green-soft);
-            bottom: -60px;
-            left: -60px;
+        .cloud.c-green-1 {
+            width: 75vw;
+            height: 75vh;
+            background: #98c9a3;
+            /* Deepened light green */
+            bottom: -15%;
+            right: -10%;
+            animation: float2 28s ease-in-out infinite alternate;
+        }
+
+        .cloud.c-orange-2 {
+            width: 60vw;
+            height: 60vh;
+            background: #fca858;
+            /* Mid orange */
+            bottom: -10%;
+            left: 10%;
+            animation: float3 26s ease-in-out infinite alternate;
+        }
+
+        .cloud.c-green-2 {
+            width: 65vw;
+            height: 65vh;
+            background: #b6dec0;
+            /* Soft green */
+            top: -5%;
+            right: 15%;
+            animation: float4 30s ease-in-out infinite alternate;
+        }
+
+        @keyframes float1 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(25vw, 15vh) scale(1.1);
+            }
+
+            100% {
+                transform: translate(10vw, 30vh) scale(0.9);
+            }
+        }
+
+        @keyframes float2 {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(-20vw, -15vh) scale(1.15);
+            }
+
+            100% {
+                transform: translate(-30vw, -5vh) scale(0.95);
+            }
+        }
+
+        @keyframes float3 {
+            0% {
+                transform: translate(0, 0) scale(1.05);
+            }
+
+            50% {
+                transform: translate(15vw, -25vh) scale(0.95);
+            }
+
+            100% {
+                transform: translate(-10vw, -10vh) scale(1.1);
+            }
+        }
+
+        @keyframes float4 {
+            0% {
+                transform: translate(0, 0) scale(0.95);
+            }
+
+            50% {
+                transform: translate(-25vw, 20vh) scale(1.05);
+            }
+
+            100% {
+                transform: translate(-15vw, 5vh) scale(1);
+            }
         }
 
         .hero-content {
@@ -313,18 +404,23 @@
             font-size: clamp(2.2rem, 6vw, 3.8rem);
             line-height: 1.15;
             max-width: 700px;
+            color: var(--text-main);
+            /* Changed to dark text for contrast */
+            text-shadow: 0 4px 24px rgba(255, 255, 255, 0.4);
         }
 
         .hero h1 em {
-            color: var(--orange-mid);
+            color: #2D9E04;
             font-style: normal;
         }
 
         .hero-sub {
             font-size: clamp(.9rem, 2vw, 1.05rem);
-            color: rgba(255, 255, 255, .78);
+            color: var(--text-main);
+            /* Changed to dark text */
             max-width: 500px;
             line-height: 1.6;
+            font-weight: 500;
         }
 
         .hero-pills {
@@ -1568,9 +1664,12 @@
 
     <!-- ═══════════════════════════════════ HERO ════════════════════════════════════════ -->
     <section class="hero" aria-label="Hero banner">
-        <div class="hero-bg" id="heroBg"></div>
-        <div class="hero-blob hero-blob-1"></div>
-        <div class="hero-blob hero-blob-2"></div>
+        <div class="apple-music-bg" id="heroBg">
+            <div class="cloud c-orange-1"></div>
+            <div class="cloud c-green-1"></div>
+            <div class="cloud c-orange-2"></div>
+            <div class="cloud c-green-2"></div>
+        </div>
 
         <div class="hero-content">
             <div class="hero-badge">✦ Est. with love from Tamil Nadu</div>
