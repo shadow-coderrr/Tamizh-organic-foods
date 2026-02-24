@@ -321,6 +321,27 @@
             animation: float4 30s ease-in-out infinite alternate;
         }
 
+        /* NEW MULTI-COLORS */
+        .cloud.c-purple-1 {
+            width: 85vw;
+            height: 85vh;
+            background: #9d8cd2;
+            /* Soft purple */
+            top: 20%;
+            left: 30%;
+            animation: float5 32s ease-in-out infinite alternate;
+        }
+
+        .cloud.c-pink-1 {
+            width: 75vw;
+            height: 75vh;
+            background: #f08b9c;
+            /* Soft warm pink */
+            bottom: 20%;
+            right: 25%;
+            animation: float6 29s ease-in-out infinite alternate;
+        }
+
         @keyframes float1 {
             0% {
                 transform: translate(0, 0) scale(1);
@@ -374,6 +395,34 @@
 
             100% {
                 transform: translate(-15vw, 5vh) scale(1);
+            }
+        }
+
+        @keyframes float5 {
+            0% {
+                transform: translate(0, 0) scale(0.9);
+            }
+
+            50% {
+                transform: translate(20vw, 15vh) scale(1.1);
+            }
+
+            100% {
+                transform: translate(-20vw, -10vh) scale(1);
+            }
+        }
+
+        @keyframes float6 {
+            0% {
+                transform: translate(0, 0) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-15vw, -20vh) scale(0.95);
+            }
+
+            100% {
+                transform: translate(15vw, 15vh) scale(1.05);
             }
         }
 
@@ -1675,6 +1724,8 @@
             <div class="cloud c-green-1"></div>
             <div class="cloud c-orange-2"></div>
             <div class="cloud c-green-2"></div>
+            <div class="cloud c-purple-1"></div>
+            <div class="cloud c-pink-1"></div>
         </div>
 
         <div class="hero-content">
