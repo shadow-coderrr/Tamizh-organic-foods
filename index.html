@@ -253,7 +253,8 @@
         .apple-music-bg {
             position: absolute;
             inset: 0;
-            background: #fcfcfc;
+            background: linear-gradient(135deg, #e89547 0%, #7ab087 100%);
+            /* Medium gradient to remove white edges completely */
             overflow: hidden;
             z-index: 0;
         }
@@ -272,48 +273,49 @@
         .cloud {
             position: absolute;
             border-radius: 50%;
-            filter: blur(90px);
-            opacity: 0.85;
+            filter: blur(120px);
+            /* Increased blur further */
+            opacity: 0.95;
             will-change: transform;
             mix-blend-mode: normal;
             pointer-events: none;
         }
 
         .cloud.c-orange-1 {
-            width: 70vw;
-            height: 70vh;
-            background: #ffb870;
-            /* Deepened light orange */
+            width: 90vw;
+            height: 90vh;
+            background: #e88b33;
+            /* Darker, richer orange */
             top: -10%;
             left: -10%;
             animation: float1 24s ease-in-out infinite alternate;
         }
 
         .cloud.c-green-1 {
-            width: 75vw;
-            height: 75vh;
-            background: #98c9a3;
-            /* Deepened light green */
+            width: 100vw;
+            height: 100vh;
+            background: #4B9B5A;
+            /* Darker earth green */
             bottom: -15%;
             right: -10%;
             animation: float2 28s ease-in-out infinite alternate;
         }
 
         .cloud.c-orange-2 {
-            width: 60vw;
-            height: 60vh;
-            background: #fca858;
-            /* Mid orange */
+            width: 80vw;
+            height: 80vh;
+            background: #f79234;
+            /* Rich mid orange */
             bottom: -10%;
             left: 10%;
             animation: float3 26s ease-in-out infinite alternate;
         }
 
         .cloud.c-green-2 {
-            width: 65vw;
-            height: 65vh;
-            background: #b6dec0;
-            /* Soft green */
+            width: 90vw;
+            height: 90vh;
+            background: #5a9e6b;
+            /* Earthy green */
             top: -5%;
             right: 15%;
             animation: float4 30s ease-in-out infinite alternate;
@@ -404,23 +406,27 @@
             font-size: clamp(2.2rem, 6vw, 3.8rem);
             line-height: 1.15;
             max-width: 700px;
-            color: var(--text-main);
-            /* Changed to dark text for contrast */
-            text-shadow: 0 4px 24px rgba(255, 255, 255, 0.4);
+            color: #ffffff;
+            /* User requested white text */
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+            /* Soft dark shadow for contrast over new background */
         }
 
         .hero h1 em {
             color: #2D9E04;
             font-style: normal;
+            text-shadow: 0 2px 25px rgba(255, 255, 255, 0.95);
+            /* Extremely strong white glow to let the green pop over other colors */
         }
 
         .hero-sub {
             font-size: clamp(.9rem, 2vw, 1.05rem);
-            color: var(--text-main);
-            /* Changed to dark text */
+            color: #ffffff;
+            /* Subtext white as well */
             max-width: 500px;
             line-height: 1.6;
             font-weight: 500;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
         }
 
         .hero-pills {
