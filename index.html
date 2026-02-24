@@ -255,6 +255,43 @@
             inset: 0;
             background: #ffffff;
             z-index: 0;
+            overflow: hidden;
+        }
+
+        /* Traditional Pattern Styles */
+        .mandala {
+            position: absolute;
+            width: 70vmin;
+            min-width: 500px;
+            height: auto;
+            opacity: 0.07;
+            pointer-events: none;
+            fill: none;
+            stroke: #000000;
+            /* Crisp black ink lines */
+            stroke-width: 0.8;
+            animation: rotateMandala 160s linear infinite;
+        }
+
+        .mandala-left {
+            top: -25%;
+            left: -15%;
+        }
+
+        .mandala-right {
+            bottom: -25%;
+            right: -10%;
+            animation-direction: reverse;
+        }
+
+        @keyframes rotateMandala {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .hero-content {
@@ -1550,7 +1587,86 @@
 
     <!-- ═══════════════════════════════════ HERO ════════════════════════════════════════ -->
     <section class="hero" aria-label="Hero banner">
-        <div class="hero-bg-white" id="heroBg"></div>
+        <div class="hero-bg-white" id="heroBg">
+            <!-- Traditional Mandala Background Element (Left) -->
+            <svg class="mandala mandala-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <circle cx="100" cy="100" r="95" stroke-width="2" stroke-dasharray="4 4" />
+                    <circle cx="100" cy="100" r="88" stroke-width="0.5" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(0 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(15 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(30 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(45 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(60 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(75 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(90 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(105 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(120 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(135 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(150 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(165 100 100)" />
+                    <circle cx="100" cy="100" r="55" />
+                    <circle cx="100" cy="100" r="45" stroke-width="1.5" stroke-dasharray="2 6" />
+                    <circle cx="100" cy="100" r="35" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(45 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(90 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(135 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(180 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(225 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(270 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(315 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(45 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(90 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(135 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(180 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(225 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(270 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(315 100 100)" />
+                    <circle cx="100" cy="100" r="10" stroke-width="1.5" />
+                </g>
+            </svg>
+            <!-- Traditional Mandala Background Element (Right) -->
+            <svg class="mandala mandala-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <g>
+                    <circle cx="100" cy="100" r="95" stroke-width="2" stroke-dasharray="4 4" />
+                    <circle cx="100" cy="100" r="88" stroke-width="0.5" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(0 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(15 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(30 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(45 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(60 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(75 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(90 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(105 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(120 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(135 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(150 100 100)" />
+                    <ellipse cx="100" cy="100" rx="88" ry="12" transform="rotate(165 100 100)" />
+                    <circle cx="100" cy="100" r="55" />
+                    <circle cx="100" cy="100" r="45" stroke-width="1.5" stroke-dasharray="2 6" />
+                    <circle cx="100" cy="100" r="35" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(45 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(90 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(135 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(180 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(225 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(270 100 100)" />
+                    <path d="M100 65 Q115 35 100 15 Q85 35 100 65 Z" transform="rotate(315 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(45 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(90 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(135 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(180 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(225 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(270 100 100)" />
+                    <path d="M100 100 Q105 85 100 75 Q95 85 100 100 Z" transform="rotate(315 100 100)" />
+                    <circle cx="100" cy="100" r="10" stroke-width="1.5" />
+                </g>
+            </svg>
+        </div>
 
         <div class="hero-content">
             <div class="hero-badge">✦ Est. with love from Tamil Nadu</div>
