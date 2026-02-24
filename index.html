@@ -25,10 +25,10 @@
         }
 
         :root {
-            --green-dark: #1a3c2e;
-            --green-mid: #2d6a4f;
-            --green-soft: #52b788;
-            --green-light: #b7e4c7;
+            --theme-dark: #237803;
+            --theme-mid: #2d9e04;
+            --theme-soft: #5cbd36;
+            --theme-light: #d5efcc;
             --cream: #faf6f0;
             --cream-2: #f2ebe0;
             --brown: #7c5c3e;
@@ -54,8 +54,8 @@
 
         /* ─── Top Ticker ─────────────────────────────────────────── */
         .ticker-bar {
-            background: var(--green-dark);
-            color: var(--green-light);
+            background: var(--theme-dark);
+            color: var(--theme-light);
             font-size: .78rem;
             font-weight: 500;
             letter-spacing: .04em;
@@ -102,7 +102,7 @@
             background: rgba(250, 246, 240, .92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(45, 106, 79, .12);
+            border-bottom: 1px solid rgba(45, 158, 4, .12);
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -122,7 +122,7 @@
             height: 44px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid var(--green-soft);
+            border: 2px solid var(--theme-soft);
         }
 
         .logo-text {
@@ -134,13 +134,13 @@
         .logo-name {
             font-family: 'DM Serif Display', serif;
             font-size: 1.1rem;
-            color: var(--green-dark);
+            color: var(--theme-dark);
         }
 
         .logo-tag {
             font-size: .65rem;
             font-weight: 500;
-            color: var(--green-soft);
+            color: var(--theme-soft);
             letter-spacing: .06em;
             text-transform: uppercase;
         }
@@ -157,7 +157,7 @@
             gap: .35rem;
             font-size: .82rem;
             font-weight: 500;
-            color: var(--green-mid);
+            color: var(--theme-mid);
             text-decoration: none;
             transition: color var(--transition);
         }
@@ -172,7 +172,7 @@
         }
 
         .btn-login {
-            background: var(--green-dark);
+            background: var(--theme-dark);
             color: var(--white);
             border: none;
             border-radius: 8px;
@@ -187,7 +187,7 @@
         }
 
         .btn-login:hover {
-            background: var(--green-mid);
+            background: var(--theme-mid);
             transform: translateY(-1px);
         }
 
@@ -202,7 +202,7 @@
             align-items: center;
             gap: .5rem;
             background: var(--cream-2);
-            border: 1px solid var(--green-light);
+            border: 1px solid var(--theme-light);
             border-radius: 24px;
             padding: .3rem .9rem .3rem .4rem;
             cursor: pointer;
@@ -218,7 +218,7 @@
         .user-pill span {
             font-size: .8rem;
             font-weight: 500;
-            color: var(--green-dark);
+            color: var(--theme-dark);
         }
 
         /* ─── Hero ───────────────────────────────────────────────── */
@@ -236,9 +236,9 @@
             position: absolute;
             inset: 0;
             background:
-                linear-gradient(135deg, rgba(26, 60, 46, .72) 0%, rgba(45, 106, 79, .45) 60%, transparent 100%),
+                linear-gradient(135deg, rgba(35, 120, 3, .72) 0%, rgba(45, 158, 4, .45) 60%, transparent 100%),
                 url('') center/cover no-repeat;
-            background-color: var(--green-dark);
+            background-color: var(--theme-dark);
         }
 
         /* Decorative organic blobs */
@@ -253,7 +253,7 @@
         .hero-blob-1 {
             width: 420px;
             height: 420px;
-            background: var(--green-soft);
+            background: var(--theme-soft);
             top: -80px;
             right: -100px;
         }
@@ -261,7 +261,7 @@
         .hero-blob-2 {
             width: 280px;
             height: 280px;
-            background: var(--green-light);
+            background: var(--theme-light);
             bottom: -60px;
             left: -60px;
         }
@@ -287,7 +287,7 @@
             font-weight: 500;
             letter-spacing: .06em;
             text-transform: uppercase;
-            color: var(--green-light);
+            color: var(--theme-light);
         }
 
         .hero h1 {
@@ -298,7 +298,7 @@
         }
 
         .hero h1 em {
-            color: var(--green-light);
+            color: var(--theme-light);
             font-style: normal;
         }
 
@@ -334,7 +334,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--green-soft);
+            background: var(--theme-soft);
             display: inline-block;
         }
 
@@ -385,14 +385,14 @@
         .section-title {
             font-family: 'DM Serif Display', serif;
             font-size: clamp(1.6rem, 4vw, 2.2rem);
-            color: var(--green-dark);
+            color: var(--theme-dark);
             line-height: 1.1;
         }
 
         .section-line {
             flex: 1;
             height: 1px;
-            background: linear-gradient(90deg, var(--green-light), transparent);
+            background: linear-gradient(90deg, var(--theme-light), transparent);
             margin-bottom: .55rem;
         }
 
@@ -469,8 +469,8 @@
 
         /* Navbar — deepen shadow on scroll */
         .navbar.scrolled {
-            box-shadow: 0 4px 24px rgba(26, 60, 46, .13);
-            border-bottom-color: rgba(45, 106, 79, .22);
+            box-shadow: 0 4px 24px rgba(35, 120, 3, .13);
+            border-bottom-color: rgba(45, 158, 4, .22);
         }
 
         /* Product card — smooth scale-in when revealed */
@@ -582,7 +582,7 @@
             height: 40px;
             border-radius: 50%;
             background: var(--white);
-            border: 1px solid var(--green-light);
+            border: 1px solid var(--theme-light);
             box-shadow: var(--shadow-sm);
             display: flex;
             align-items: center;
@@ -592,7 +592,7 @@
         }
 
         .scroll-btn:hover {
-            background: var(--green-dark);
+            background: var(--theme-dark);
         }
 
         .scroll-btn:hover svg {
@@ -602,7 +602,7 @@
         .scroll-btn svg {
             width: 18px;
             height: 18px;
-            stroke: var(--green-dark);
+            stroke: var(--theme-dark);
             transition: stroke var(--transition);
         }
 
@@ -654,7 +654,7 @@
             flex-direction: column;
             align-items: center;
             gap: .5rem;
-            color: var(--green-soft);
+            color: var(--theme-soft);
             opacity: .7;
         }
 
@@ -673,7 +673,7 @@
             position: absolute;
             top: .6rem;
             left: .6rem;
-            background: var(--green-dark);
+            background: var(--theme-dark);
             color: var(--white);
             font-size: .62rem;
             font-weight: 600;
@@ -693,14 +693,14 @@
         .product-name {
             font-family: 'DM Serif Display', serif;
             font-size: 1rem;
-            color: var(--green-dark);
+            color: var(--theme-dark);
             line-height: 1.25;
         }
 
         .product-tag {
             font-size: .7rem;
             font-weight: 500;
-            color: var(--green-soft);
+            color: var(--theme-soft);
             text-transform: uppercase;
             letter-spacing: .05em;
         }
@@ -715,13 +715,13 @@
         /* ─── Genre divider ──────────────────────────────────────── */
         .genre-separator {
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--green-light), transparent);
+            background: linear-gradient(90deg, transparent, var(--theme-light), transparent);
             margin: 0 2rem;
         }
 
         /* ─── Info Strip ─────────────────────────────────────────── */
         .info-strip {
-            background: var(--green-dark);
+            background: var(--theme-dark);
             color: var(--white);
             padding: 3rem 2rem;
             display: grid;
@@ -750,7 +750,7 @@
         .info-icon svg {
             width: 20px;
             height: 20px;
-            stroke: var(--green-light);
+            stroke: var(--theme-light);
         }
 
         .info-label {
@@ -774,7 +774,7 @@
         }
 
         footer a {
-            color: var(--green-soft);
+            color: var(--theme-soft);
             text-decoration: none;
         }
 
@@ -818,7 +818,7 @@
         }
 
         .modal-head {
-            background: var(--green-dark);
+            background: var(--theme-dark);
             padding: 1.8rem 1.8rem 1.4rem;
             display: flex;
             flex-direction: column;
@@ -852,7 +852,7 @@
         .field label {
             font-size: .78rem;
             font-weight: 600;
-            color: var(--green-dark);
+            color: var(--theme-dark);
             letter-spacing: .03em;
         }
 
@@ -868,7 +868,7 @@
         }
 
         .field input:focus {
-            border-color: var(--green-soft);
+            border-color: var(--theme-soft);
         }
 
         .modal-note {
@@ -878,7 +878,7 @@
         }
 
         .btn-save {
-            background: var(--green-dark);
+            background: var(--theme-dark);
             color: var(--white);
             border: none;
             border-radius: 10px;
@@ -892,7 +892,7 @@
         }
 
         .btn-save:hover {
-            background: var(--green-mid);
+            background: var(--theme-mid);
             transform: translateY(-1px);
         }
 
@@ -937,7 +937,7 @@
         }
 
         .drawer-head {
-            background: var(--green-dark);
+            background: var(--theme-dark);
             padding: 2rem 1.5rem 1.5rem;
             display: flex;
             flex-direction: column;
@@ -989,7 +989,7 @@
         .drawer-field .lbl {
             font-size: .7rem;
             font-weight: 600;
-            color: var(--green-soft);
+            color: var(--theme-soft);
             text-transform: uppercase;
             letter-spacing: .05em;
         }
@@ -1040,7 +1040,7 @@
         .btn-cart {
             position: relative;
             background: none;
-            border: 1.5px solid var(--green-light);
+            border: 1.5px solid var(--theme-light);
             border-radius: 10px;
             width: 42px;
             height: 38px;
@@ -1049,12 +1049,12 @@
             justify-content: center;
             cursor: pointer;
             transition: background var(--transition), border-color var(--transition), transform var(--transition);
-            color: var(--green-dark);
+            color: var(--theme-dark);
         }
 
         .btn-cart:hover {
-            background: var(--green-dark);
-            border-color: var(--green-dark);
+            background: var(--theme-dark);
+            border-color: var(--theme-dark);
             color: var(--white);
             transform: translateY(-1px);
         }
@@ -1101,7 +1101,7 @@
         .btn-add-cart {
             margin-top: auto;
             padding: .52rem .9rem;
-            background: var(--green-dark);
+            background: var(--theme-dark);
             color: var(--white);
             border: none;
             border-radius: 9px;
@@ -1119,7 +1119,7 @@
         }
 
         .btn-add-cart:hover {
-            background: var(--green-mid);
+            background: var(--theme-mid);
             transform: translateY(-1px);
         }
 
@@ -1154,7 +1154,7 @@
         }
 
         .cart-drawer-head {
-            background: var(--green-dark);
+            background: var(--theme-dark);
             padding: 1.5rem 1.4rem 1.3rem;
             display: flex;
             align-items: center;
@@ -1173,7 +1173,7 @@
         .cart-drawer-head h3 svg {
             width: 18px;
             height: 18px;
-            stroke: var(--green-light);
+            stroke: var(--theme-light);
         }
 
         .btn-close-cart {
@@ -1214,7 +1214,7 @@
         .cart-empty svg {
             width: 48px;
             height: 48px;
-            stroke: var(--green-light);
+            stroke: var(--theme-light);
             opacity: .7;
         }
 
@@ -1248,7 +1248,7 @@
         .cart-item-icon {
             width: 40px;
             height: 40px;
-            background: var(--green-light);
+            background: var(--theme-light);
             border-radius: 8px;
             display: flex;
             align-items: center;
@@ -1259,7 +1259,7 @@
         .cart-item-icon svg {
             width: 20px;
             height: 20px;
-            stroke: var(--green-dark);
+            stroke: var(--theme-dark);
         }
 
         .cart-item-info {
@@ -1270,7 +1270,7 @@
         .cart-item-name {
             font-size: .85rem;
             font-weight: 600;
-            color: var(--green-dark);
+            color: var(--theme-dark);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1292,7 +1292,7 @@
             width: 26px;
             height: 26px;
             border-radius: 7px;
-            border: 1.5px solid var(--green-light);
+            border: 1.5px solid var(--theme-light);
             background: var(--white);
             font-size: 1rem;
             line-height: 1;
@@ -1300,18 +1300,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--green-dark);
+            color: var(--theme-dark);
             transition: background var(--transition);
         }
 
         .qty-btn:hover {
-            background: var(--green-light);
+            background: var(--theme-light);
         }
 
         .qty-num {
             font-size: .85rem;
             font-weight: 700;
-            color: var(--green-dark);
+            color: var(--theme-dark);
             min-width: 18px;
             text-align: center;
         }
@@ -1353,12 +1353,12 @@
         }
 
         .cart-summary strong {
-            color: var(--green-dark);
+            color: var(--theme-dark);
             font-size: .95rem;
         }
 
         .btn-enquire {
-            background: var(--green-dark);
+            background: var(--theme-dark);
             color: var(--white);
             border: none;
             border-radius: 10px;
@@ -1376,7 +1376,7 @@
         }
 
         .btn-enquire:hover {
-            background: var(--green-mid);
+            background: var(--theme-mid);
             transform: translateY(-1px);
         }
 
@@ -1848,7 +1848,7 @@
             </div>
             <p class="info-label">@thamizhhomemade</p>
             <p class="info-val"><a href="https://www.instagram.com/thamizhhomemade" target="_blank" rel="noopener"
-                    style="color:var(--green-light)">Follow on Instagram</a></p>
+                    style="color:var(--theme-light)">Follow on Instagram</a></p>
         </div>
     </div>
 
@@ -1912,7 +1912,7 @@
         <div class="modal-box">
             <!-- Confirm view -->
             <div id="orderConfirmView">
-                <div class="modal-head" style="background:var(--green-dark);">
+                <div class="modal-head" style="background:var(--theme-dark);">
                     <h2 style="font-family:'DM Serif Display',serif;color:#fff;font-size:1.3rem;">Confirm Your Order 🌿
                     </h2>
                     <p style="color:rgba(255,255,255,.65);font-size:.82rem;margin-top:.2rem;">Review your items and
@@ -1928,14 +1928,14 @@
                     <!-- Cart summary -->
                     <div style="background:var(--cream);border-radius:10px;padding:.9rem 1rem;">
                         <p
-                            style="font-size:.72rem;font-weight:600;color:var(--green-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem;">
+                            style="font-size:.72rem;font-weight:600;color:var(--theme-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem;">
                             Your Items</p>
                         <div id="orderItemsList" style="display:flex;flex-direction:column;gap:.4rem;"></div>
                     </div>
                     <!-- Delivery details -->
                     <div style="background:var(--cream);border-radius:10px;padding:.9rem 1rem;">
                         <p
-                            style="font-size:.72rem;font-weight:600;color:var(--green-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.7rem;">
+                            style="font-size:.72rem;font-weight:600;color:var(--theme-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.7rem;">
                             Delivery Details</p>
                         <div class="field">
                             <label for="ord-name">Full Name</label>
@@ -1957,14 +1957,14 @@
             <!-- Success view -->
             <div id="orderSuccessView" style="display:none;text-align:center;padding:2.5rem 1.8rem;">
                 <div
-                    style="width:64px;height:64px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--green-dark)" stroke-width="2.5" width="30"
+                    style="width:64px;height:64px;background:var(--theme-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--theme-dark)" stroke-width="2.5" width="30"
                         height="30">
                         <polyline points="20 6 9 17 4 12" />
                     </svg>
                 </div>
                 <h2
-                    style="font-family:'DM Serif Display',serif;color:var(--green-dark);font-size:1.4rem;margin-bottom:.5rem;">
+                    style="font-family:'DM Serif Display',serif;color:var(--theme-dark);font-size:1.4rem;margin-bottom:.5rem;">
                     Order Placed!</h2>
                 <p style="color:var(--text-muted);font-size:.85rem;line-height:1.6;">Thank you! We've received your
                     order and will reach out to you soon to confirm delivery.</p>
@@ -2231,7 +2231,7 @@
             listEl.innerHTML = cart.map(i =>
                 `<div style="display:flex;justify-content:space-between;font-size:.83rem;">
                     <span style="color:var(--text-main);font-weight:500;">${i.name}</span>
-                    <span style="color:var(--green-mid);font-weight:600;">x${i.qty}</span>
+                    <span style="color:var(--theme-mid);font-weight:600;">x${i.qty}</span>
                  </div>`
             ).join('');
             // Show confirm view, hide success
