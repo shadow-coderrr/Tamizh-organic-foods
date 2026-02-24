@@ -260,7 +260,7 @@
         .hero-overlay {
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%);
             z-index: 1;
         }
 
@@ -296,6 +296,38 @@
             max-width: 700px;
             color: var(--white);
             text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero h1 span.type-line {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 0;
+            border-right: 2px solid transparent;
+            animation: typing 1s steps(30, end) forwards;
+        }
+
+        .hero h1 span.type-line:nth-child(1) {
+            animation-delay: 0.6s;
+        }
+
+        .hero h1 span.type-line:nth-child(2) {
+            animation-delay: 1.6s;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+                border-right-color: rgba(255, 255, 255, 0.8);
+            }
+
+            to {
+                width: 100%;
+                border-right-color: transparent;
+            }
         }
 
         .hero h1 em {
@@ -450,16 +482,12 @@
             animation: hero-fade-up .7s .15s cubic-bezier(.22, 1, .36, 1) both;
         }
 
-        .hero h1 {
-            animation: hero-fade-up .75s .28s cubic-bezier(.22, 1, .36, 1) both;
-        }
-
         .hero-sub {
-            animation: hero-fade-up .7s .42s cubic-bezier(.22, 1, .36, 1) both;
+            animation: hero-fade-up .7s 2.6s cubic-bezier(.22, 1, .36, 1) both;
         }
 
         .hero-pills {
-            animation: hero-fade-up .65s .56s cubic-bezier(.22, 1, .36, 1) both;
+            animation: hero-fade-up .65s 3.0s cubic-bezier(.22, 1, .36, 1) both;
         }
 
         @keyframes hero-fade-up {
@@ -483,11 +511,12 @@
         /* Product card — smooth scale-in when revealed */
         .product-card {
             opacity: 0;
-            transform: translateY(28px) scale(.97);
+            transform: translateY(40px) scale(0.92);
             transition:
-                opacity .55s cubic-bezier(.22, 1, .36, 1),
-                transform .55s cubic-bezier(.22, 1, .36, 1),
+                opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
                 box-shadow var(--transition);
+            will-change: opacity, transform;
         }
 
         .product-card.visible {
@@ -498,14 +527,15 @@
         /* Info strip items */
         .info-item {
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity .55s cubic-bezier(.22, 1, .36, 1),
-                transform .55s cubic-bezier(.22, 1, .36, 1);
+            transform: translateY(35px) scale(0.9);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
 
         .info-item.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
         /* Button ripple effect */
@@ -534,25 +564,29 @@
         /* Section header fade-slide */
         .section-header {
             opacity: 0;
-            transform: translateX(-18px);
-            transition: opacity .6s cubic-bezier(.22, 1, .36, 1),
-                transform .6s cubic-bezier(.22, 1, .36, 1);
+            transform: translateY(30px) scale(0.95);
+            transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
         }
 
         .section-header.visible {
             opacity: 1;
-            transform: translateX(0);
+            transform: translateY(0) scale(1);
         }
 
         /* Genre separator reveal */
         .genre-separator {
             transform: scaleX(0);
-            transform-origin: left;
-            transition: transform .7s cubic-bezier(.22, 1, .36, 1);
+            transform-origin: center;
+            opacity: 0;
+            transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+            will-change: transform, opacity;
         }
 
         .genre-separator.visible {
             transform: scaleX(1);
+            opacity: 1;
         }
 
         /* Scroll arrow button — hover pulse */
@@ -1563,7 +1597,8 @@
         <div class="hero-content">
             <div class="hero-badge">✦ Est. with love from Tamil Nadu</div>
             <h1>
-                <em>Natural</em> &amp; Homemade<br />Goodness, Delivered
+                <span class="type-line"><em>Natural</em> &amp; Homemade</span>
+                <span class="type-line">Goodness, Delivered</span>
             </h1>
             <p class="hero-sub">
                 Handcrafted organic foods made fresh — no preservatives, no compromise. From our kitchen to your family.
@@ -2293,58 +2328,45 @@
                 navbar.classList.toggle('scrolled', window.scrollY > 10);
             }, { passive: true });
 
-            // ── Generic reveal: toggle on EVERY intersection (in & out) ──
-            const revealObs = new IntersectionObserver((entries) => {
+            // ── Premium Reveal: smooth logic animating globally ──
+            const revealOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
+
+            const blockObs = new IntersectionObserver((entries) => {
                 entries.forEach(e => {
-                    // add 'visible' when entering viewport, remove when leaving → re-animates on every scroll
+                    // add visible to animate in, remove to reset so it triggers again nicely.
                     e.target.classList.toggle('visible', e.isIntersecting);
                 });
-            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+            }, revealOptions);
 
-            // Section headers
-            document.querySelectorAll('.section-header').forEach(el => revealObs.observe(el));
+            document.querySelectorAll('.section-header, .genre-separator').forEach(el => blockObs.observe(el));
 
-            // Genre separator
-            document.querySelectorAll('.genre-separator').forEach(el => revealObs.observe(el));
+            // Stagger observer for grids/cards - guarantees animation triggers both directions
+            const staggerOptions = { threshold: 0.1, rootMargin: '0px 0px -20px 0px' };
+            const staggerObs = new IntersectionObserver((entries) => {
+                let accumulation = 0;
+                entries.forEach((e) => {
+                    if (e.isIntersecting) {
+                        // Ensure we aren't overlapping a previous entry delay if many elements appear
+                        e.target.style.transitionDelay = `${accumulation}ms`;
+                        void e.target.offsetWidth; // Force reflow
+                        e.target.classList.add('visible');
+                        accumulation += 70; // 70ms stagger
 
-            // ── Product cards — stagger on EVERY entry ──
-            document.querySelectorAll('.products-scroll').forEach(row => {
-                const cards = row.querySelectorAll('.product-card');
-                const cardObs = new IntersectionObserver((entries) => {
-                    entries.forEach(e => {
-                        if (e.isIntersecting) {
-                            // reset then stagger in
-                            cards.forEach(c => c.classList.remove('visible'));
-                            cards.forEach((card, i) => {
-                                setTimeout(() => card.classList.add('visible'), i * 90);
-                            });
-                        } else {
-                            // hide when row scrolls out — ready to re-animate
-                            cards.forEach(c => c.classList.remove('visible'));
-                        }
-                    });
-                }, { threshold: 0.1 });
-                cardObs.observe(row);
-            });
+                        // Wipe transitionDelay so hover states respond instantly
+                        setTimeout(() => {
+                            if (e.target.classList.contains('visible')) {
+                                e.target.style.transitionDelay = '0ms';
+                            }
+                        }, 900);
+                    } else {
+                        // Remove instantly for clean re-entry later
+                        e.target.style.transitionDelay = '0ms';
+                        e.target.classList.remove('visible');
+                    }
+                });
+            }, staggerOptions);
 
-            // ── Info strip items — stagger on EVERY entry ──
-            const infoItems = document.querySelectorAll('.info-item');
-            const strip = infoItems[0]?.closest('.info-strip') || infoItems[0];
-            if (strip) {
-                const infoObs = new IntersectionObserver((entries) => {
-                    entries.forEach(e => {
-                        if (e.isIntersecting) {
-                            infoItems.forEach(item => item.classList.remove('visible'));
-                            infoItems.forEach((item, i) => {
-                                setTimeout(() => item.classList.add('visible'), i * 100);
-                            });
-                        } else {
-                            infoItems.forEach(item => item.classList.remove('visible'));
-                        }
-                    });
-                }, { threshold: 0.15 });
-                infoObs.observe(strip);
-            }
+            document.querySelectorAll('.product-card, .info-item').forEach(el => staggerObs.observe(el));
 
             // Ripple effect on buttons
             document.querySelectorAll('.btn-login, .btn-save').forEach(btn => {
