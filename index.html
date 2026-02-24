@@ -250,91 +250,23 @@
             justify-content: center;
         }
 
-        .hero-bg-white {
+        .hero-bg-image {
             position: absolute;
             inset: 0;
-            background: #ffffff;
+            background: url('assets/organic_hero_bg.png') center/cover no-repeat;
             z-index: 0;
-            overflow: hidden;
         }
 
-        /* Village Farmland Styles */
-        .farm-landscape {
+        .hero-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: auto;
-            min-height: 280px;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
             z-index: 1;
-            /* Below text, above bg */
-            pointer-events: none;
-        }
-
-        /* Animated Clouds */
-        .svg-cloud {
-            animation: drift var(--duration, 40s) linear infinite;
-        }
-
-        .svg-cloud-1 {
-            --duration: 45s;
-        }
-
-        .svg-cloud-2 {
-            --duration: 60s;
-        }
-
-        .svg-cloud-3 {
-            --duration: 35s;
-        }
-
-        @keyframes drift {
-            0% {
-                transform: translateX(-10%);
-            }
-
-            100% {
-                transform: translateX(110%);
-            }
-        }
-
-        /* Animated Birds */
-        .svg-bird {
-            animation: fly var(--fly-time, 15s) ease-in-out infinite alternate,
-                flap .5s infinite alternate;
-            transform-origin: center;
-        }
-
-        .svg-bird-1 {
-            --fly-time: 20s;
-        }
-
-        .svg-bird-2 {
-            --fly-time: 16s;
-        }
-
-        @keyframes fly {
-            0% {
-                transform: translateY(0px) translateX(0px);
-            }
-
-            100% {
-                transform: translateY(-30px) translateX(50px);
-            }
-        }
-
-        @keyframes flap {
-            0% {
-                transform: scaleY(1);
-            }
-
-            100% {
-                transform: scaleY(0.6);
-            }
         }
 
         .hero-content {
             position: relative;
+            z-index: 2;
             text-align: center;
             color: var(--white);
             padding: 0 1.5rem;
@@ -345,9 +277,8 @@
         }
 
         .hero-badge {
-            background: rgba(45, 158, 4, 0.1);
-            /* Light green tint */
-            border: 1px solid rgba(45, 158, 4, 0.2);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(8px);
             border-radius: 50px;
             padding: .35rem 1rem;
@@ -355,8 +286,7 @@
             font-weight: 600;
             letter-spacing: .06em;
             text-transform: uppercase;
-            color: #2D9E04;
-            /* Darker green text */
+            color: var(--white);
         }
 
         .hero h1 {
@@ -364,22 +294,22 @@
             font-size: clamp(2.2rem, 6vw, 3.8rem);
             line-height: 1.15;
             max-width: 700px;
-            color: #000000;
-            /* User requested black text */
+            color: var(--white);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .hero h1 em {
-            color: #2D9E04;
+            color: var(--orange-mid);
             font-style: normal;
         }
 
         .hero-sub {
             font-size: clamp(.9rem, 2vw, 1.05rem);
-            color: var(--text-muted);
-            /* Changed from white to dark gray */
+            color: rgba(255, 255, 255, 0.9);
             max-width: 500px;
             line-height: 1.6;
             font-weight: 500;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
         }
 
         .hero-pills {
@@ -388,12 +318,14 @@
             justify-content: center;
             gap: .6rem;
             margin-top: .3rem;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-pill {
-            background: rgba(45, 158, 4, 0.05);
-            /* Very light green */
-            border: 1px solid rgba(45, 158, 4, 0.1);
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
             border-radius: 50px;
             padding: .35rem .9rem;
             font-size: .76rem;
@@ -401,15 +333,14 @@
             display: flex;
             align-items: center;
             gap: .38rem;
-            color: var(--text-main);
-            /* Dark text */
+            color: var(--white);
         }
 
         .hero-pill span.dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: var(--green-mid);
+            background: var(--orange-mid);
             display: inline-block;
         }
 
@@ -418,8 +349,7 @@
             bottom: 1.8rem;
             left: 50%;
             transform: translateX(-50%);
-            color: var(--text-muted);
-            /* Darker text */
+            color: rgba(255, 255, 255, 0.8);
             font-size: .72rem;
             letter-spacing: .05em;
             display: flex;
@@ -427,6 +357,7 @@
             align-items: center;
             gap: .4rem;
             animation: bob 2.2s ease-in-out infinite;
+            z-index: 2;
         }
 
         .hero-scroll .arrow {
@@ -1626,125 +1557,8 @@
 
     <!-- ═══════════════════════════════════ HERO ════════════════════════════════════════ -->
     <section class="hero" aria-label="Hero banner">
-        <div class="hero-bg-white" id="heroBg">
-            <!-- Village Farmland Landscape SVG -->
-            <svg class="farm-landscape" viewBox="0 0 1440 320" preserveAspectRatio="xMidYMax slice"
-                xmlns="http://www.w3.org/2000/svg">
-                <!-- Sky/Sun Background Gradient (Optional subtle glow) -->
-                <defs>
-                    <linearGradient id="sunGlow" x1="50%" y1="0%" x2="50%" y2="100%">
-                        <stop offset="0%" stop-color="#fff9e6" stop-opacity="0.8" />
-                        <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-                    </linearGradient>
-                </defs>
-                <rect width="1440" height="320" fill="url(#sunGlow)" />
-
-                <!-- Stylized Sun -->
-                <circle cx="720" cy="180" r="60" fill="#ffe299" opacity="0.6" />
-
-                <!-- Animated Clouds -->
-                <g class="svg-cloud svg-cloud-1" fill="#f0fbff" opacity="0.8">
-                    <path d="M150 120 Q170 100 200 120 Q230 110 240 130 Q250 140 230 150 L140 150 Q120 140 150 120 Z" />
-                </g>
-                <g class="svg-cloud svg-cloud-2" fill="#f0fbff" opacity="0.6"
-                    transform="translate(400, -20) scale(1.5)">
-                    <path d="M150 120 Q170 100 200 120 Q230 110 240 130 Q250 140 230 150 L140 150 Q120 140 150 120 Z" />
-                </g>
-                <g class="svg-cloud svg-cloud-3" fill="#fafafa" opacity="0.9" transform="translate(800, 30) scale(0.8)">
-                    <path d="M150 120 Q170 100 200 120 Q230 110 240 130 Q250 140 230 150 L140 150 Q120 140 150 120 Z" />
-                </g>
-
-                <!-- Distant Background Hills (Soft Pastels) -->
-                <path d="M0 250 Q200 200 400 260 T900 240 T1440 250 L1440 320 L0 320 Z" fill="#d5eed6" />
-                <path d="M0 280 Q300 230 600 270 T1200 250 T1440 280 L1440 320 L0 320 Z" fill="#c3e4c5" />
-
-                <!-- Main Midground Hills (Richer Green) -->
-                <path d="M-100 320 Q300 180 800 290 T1500 270 L1500 320 L-100 320 Z" fill="#a4d4a8" />
-
-                <!-- Traditional Tamil Village Silhouette elements -->
-                <g transform="translate(320, 0)">
-                    <!-- Palm/Coconut Trees Left -->
-                    <g stroke="#6e9c71" stroke-width="4" stroke-linecap="round">
-                        <!-- Tree 1 -->
-                        <path d="M180 320 Q190 260 170 210" fill="none" />
-                        <!-- Leaves -->
-                        <g fill="#5e8b61" stroke="none">
-                            <path d="M170 210 Q140 210 130 230 Q150 200 170 210" />
-                            <path d="M170 210 Q140 180 150 170 Q160 190 170 210" />
-                            <path d="M170 210 Q180 170 190 160 Q185 190 170 210" />
-                            <path d="M170 210 Q210 180 220 200 Q195 200 170 210" />
-                            <path d="M170 210 Q210 220 205 240 Q185 220 170 210" />
-                            <!-- Coconuts -->
-                            <circle cx="165" cy="215" r="4" fill="#84644a" />
-                            <circle cx="175" cy="217" r="4" fill="#84644a" />
-                        </g>
-                    </g>
-
-                    <!-- Palm Tree 2 -->
-                    <g stroke="#6e9c71" stroke-width="3" stroke-linecap="round"
-                        transform="translate(50, 40) scale(0.8)">
-                        <path d="M180 320 Q170 260 190 210" fill="none" />
-                        <g fill="#5e8b61" stroke="none">
-                            <path d="M190 210 Q160 210 150 230 Q170 200 190 210" />
-                            <path d="M190 210 Q160 180 170 170 Q180 190 190 210" />
-                            <path d="M190 210 Q200 170 210 160 Q205 190 190 210" />
-                            <path d="M190 210 Q230 180 240 200 Q215 200 190 210" />
-                            <path d="M190 210 Q230 220 225 240 Q205 220 190 210" />
-                        </g>
-                    </g>
-                </g>
-
-                <!-- Village Hut -->
-                <g transform="translate(680, 245)">
-                    <!-- Base -->
-                    <rect x="0" y="25" width="60" height="35" fill="#f0dbb6" />
-                    <rect x="0" y="55" width="60" height="5" fill="#c3a985" />
-                    <!-- Door -->
-                    <rect x="25" y="35" width="15" height="25" fill="#7a5c43" />
-                    <!-- Window -->
-                    <rect x="8" y="35" width="10" height="12" fill="#58412e" />
-                    <!-- Thatched Roof -->
-                    <path d="M-10 25 L30 0 L70 25 Z" fill="#c49b66" />
-                    <!-- Roof Texture Details -->
-                    <line x1="5" y1="20" x2="30" y2="5" stroke="#a47d4e" stroke-width="1.5" />
-                    <line x1="15" y1="23" x2="30" y2="10" stroke="#a47d4e" stroke-width="1.5" />
-                    <line x1="55" y1="20" x2="30" y2="5" stroke="#a47d4e" stroke-width="1.5" />
-                    <line x1="45" y1="23" x2="30" y2="10" stroke="#a47d4e" stroke-width="1.5" />
-                </g>
-
-                <!-- Field Furrows/Crops Foreground -->
-                <path d="M0 320 Q400 270 1440 320 Z" fill="#88c58f" />
-                <!-- Crop lines -->
-                <path d="M50 320 Q200 290 350 320" fill="none" stroke="#68a870" stroke-width="2" />
-                <path d="M100 320 Q250 285 450 320" fill="none" stroke="#68a870" stroke-width="2" />
-                <path d="M150 320 Q350 280 550 320" fill="none" stroke="#68a870" stroke-width="2" />
-                <path d="M800 320 Q1050 290 1300 320" fill="none" stroke="#68a870" stroke-width="2" />
-                <path d="M900 320 Q1150 285 1400 320" fill="none" stroke="#68a870" stroke-width="2" />
-
-                <!-- Distant Trees (Mid-Right) -->
-                <g fill="#77b880" transform="translate(-250, 0)">
-                    <circle cx="1100" cy="275" r="25" />
-                    <circle cx="1080" cy="285" r="20" />
-                    <circle cx="1120" cy="280" r="18" />
-                    <circle cx="1150" cy="270" r="30" />
-                    <circle cx="1180" cy="285" r="22" />
-                </g>
-
-                <!-- Animated Birds (3 Crows) -->
-                <g class="svg-bird svg-bird-1" stroke="#1a1a1a" stroke-width="2.5" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round">
-                    <path d="M600 120 Q615 100 630 120 Q645 100 660 120" />
-                </g>
-                <g class="svg-bird svg-bird-2" stroke="#1a1a1a" stroke-width="2" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round" transform="translate(-80, -20) scale(0.85)">
-                    <path d="M600 120 Q615 100 630 120 Q645 100 660 120" />
-                </g>
-                <g class="svg-bird" stroke="#1a1a1a" stroke-width="2" fill="none" stroke-linecap="round"
-                    stroke-linejoin="round" transform="translate(50, 30) scale(0.7)">
-                    <path d="M600 120 Q615 100 630 120 Q645 100 660 120" />
-                </g>
-            </svg>
-        </div>
+        <div class="hero-bg-image" id="heroBg"></div>
+        <div class="hero-overlay"></div>
 
         <div class="hero-content">
             <div class="hero-badge">✦ Est. with love from Tamil Nadu</div>
